@@ -148,17 +148,6 @@ export function Navbar({ section }: { section: string }) {
                       </span>
                     </div>
                   </div>
-
-                  <div className="pt-2 mt-1 border-t border-line/70 px-1">
-                    <a
-                      href={href('/#courses-catalog')}
-                      onClick={() => setCoursesOpen(false)}
-                      className="flex items-center justify-between w-full px-3 py-2 rounded-lg text-xs font-medium text-accent hover:bg-accent-soft transition-colors"
-                    >
-                      <span>Browse Full Curriculum Details</span>
-                      <ArrowRight size={14} />
-                    </a>
-                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -235,14 +224,6 @@ export function Navbar({ section }: { section: string }) {
               </a>
 
               <div className="pt-2 border-t border-line flex flex-col gap-1">
-                <a 
-                  href={href('/#courses-catalog')} 
-                  onClick={() => setOpen(false)} 
-                  className="tab justify-start"
-                >
-                  <LayoutGrid size={16} />
-                  Curriculum Catalog
-                </a>
                 <a 
                   href={href('/about')} 
                   onClick={() => setOpen(false)} 

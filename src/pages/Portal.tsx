@@ -68,8 +68,9 @@ export function Portal() {
             <a href="/courses/dsa/" className="btn h-12 px-6 text-[15px] font-medium">
               Launch Atlas DSA Studio
             </a>
-            <a href="#courses-catalog" className="btn btn-ghost h-12 px-5 text-[15px] font-medium text-muted hover:text-fg">
-              Browse Catalog
+            <a href={href('/about')} className="btn h-12 px-5 text-[15px] font-medium text-muted hover:text-fg">
+              <Info size={16} />
+              About SAC Learn
             </a>
           </motion.div>
         </div>
