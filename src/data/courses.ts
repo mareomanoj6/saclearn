@@ -59,7 +59,7 @@ export const COURSES: CourseItem[] = [
   },
   {
     id: 'oop',
-    code: 'CST205',
+    code: 'PBCST304 & PBEOT404',
     title: 'Object-Oriented Programming (Java)',
     semester: 'S3',
     scheme: 'KTU 2024 Scheme',

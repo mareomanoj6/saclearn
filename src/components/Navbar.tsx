@@ -137,11 +137,14 @@ export function Navbar({ section }: { section: string }) {
                       Upcoming in Pipeline
                     </div>
                     <div className="flex items-center justify-between px-3 py-2 text-xs text-muted">
-                      <div className="flex items-center gap-2">
-                        <Code2 size={15} className="text-subtle" />
-                        <span>Object-Oriented Programming (Java)</span>
+                      <div className="flex items-center gap-2.5">
+                        <Code2 size={15} className="text-subtle shrink-0" />
+                        <div className="min-w-0">
+                          <span className="block font-medium text-fg">Object-Oriented Programming (Java)</span>
+                          <span className="block text-[11px] text-subtle">PBCST304 & PBEOT404</span>
+                        </div>
                       </div>
-                      <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded bg-surface-2 text-subtle">
+                      <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded bg-surface-2 text-subtle shrink-0">
                         <Clock size={11} />
                         Scheduled
                       </span>
