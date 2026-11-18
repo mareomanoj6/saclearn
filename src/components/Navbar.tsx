@@ -10,7 +10,6 @@ import {
   ChevronDown,
   Terminal,
   Cpu,
-  ArrowRight,
   Clock,
   Code2
 } from 'lucide-react'
@@ -42,7 +41,7 @@ export function Navbar({ section }: { section: string }) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur-xl safe-top safe-x">
-      <div className="mx-auto max-w-[1440px] flex items-center gap-2 h-16 px-4 lg:px-6">
+      <div className="mx-auto max-w-[1780px] flex items-center gap-2 h-16 px-4 sm:px-6 lg:px-10">
         <a href={href('/')} className="flex items-center gap-2 sm:gap-3 mr-1 sm:mr-3 min-w-0">
           <img src="./ksucet-light.png" alt="KSU CET" className="h-8 sm:h-9 w-auto dark:hidden" />
           <img src="./ksucet-dark.png" alt="KSU CET" className="h-8 sm:h-9 w-auto hidden dark:block" />

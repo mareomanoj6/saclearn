@@ -1,86 +1,53 @@
 import { useEffect, useState } from 'react'
 
-export interface Route {
-  path: string[]
-  query: URLSearchParams
-}
+export interface Route { path: string[]; query: URLSearchParams }
 
 function parse(): Route {
-  if (typeof window === 'undefined') {
-    return { path: [], query: new URLSearchParams() }
+  if (window.location.hash.includes('about')) {
+    window.history.replaceState(null, '', '/about')
   }
-  if (window.location.hash.startsWith('#/')) {
-    const clean = window.location.hash.slice(2)
-    window.history.replaceState(null, '', '/' + clean)
-  } else if (window.location.hash.startsWith('#')) {
-    const clean = window.location.hash.slice(1)
-    if (clean && !clean.includes('=')) {
-      window.history.replaceState(null, '', '/' + clean)
-    }
-  }
-  const p = window.location.pathname.replace(/^\/|\/$/g, '')
-  return {
-    path: p ? p.split('/') : [],
-    query: new URLSearchParams(window.location.search)
-  }
+  const p = window.location.pathname || '/'
+  return { path: p.split('/').filter(Boolean), query: new URLSearchParams(window.location.search) }
+}
+
+export function navigate(to: string) {
+  const dest = to.startsWith('/') ? to : '/' + to
+  if (dest === window.location.pathname) return
+  window.history.pushState({}, '', dest)
+  window.dispatchEvent(new PopStateEvent('popstate'))
+  window.scrollTo({ top: 0 })
 }
 
 export function useRoute(): Route {
   const [route, setRoute] = useState<Route>(parse)
 
   useEffect(() => {
-    const onLocationChange = () => {
+    const on = () => {
       setRoute(parse())
       window.scrollTo({ top: 0 })
     }
 
-    const handleClick = (e: MouseEvent) => {
+    const onLinkClick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return
       const target = (e.target as HTMLElement).closest('a')
-      if (
-        !target ||
-        target.target === '_blank' ||
-        target.hasAttribute('download') ||
-        e.metaKey ||
-        e.ctrlKey ||
-        e.shiftKey ||
-        e.altKey
-      ) {
-        return
-      }
-
-      const to = target.getAttribute('href')
-      if (!to || to.startsWith('http') || to.startsWith('mailto:') || to.startsWith('tel:') || to.startsWith('#')) {
-        return
-      }
-
-      if (to.startsWith('/courses/')) {
-        return
-      }
-
+      if (!target) return
+      const h = target.getAttribute('href')
+      if (!h || h.startsWith('http') || h.startsWith('mailto:') || h.startsWith('tel:') || h.startsWith('#') || target.target === '_blank') return
+      if (h.startsWith('/courses/')) return
       e.preventDefault()
-      go(to)
+      navigate(h)
     }
 
-    window.addEventListener('popstate', onLocationChange)
-    window.addEventListener('pushstate', onLocationChange)
-    document.addEventListener('click', handleClick)
-
+    window.addEventListener('popstate', on)
+    document.addEventListener('click', onLinkClick)
     return () => {
-      window.removeEventListener('popstate', onLocationChange)
-      window.removeEventListener('pushstate', onLocationChange)
-      document.removeEventListener('click', handleClick)
+      window.removeEventListener('popstate', on)
+      document.removeEventListener('click', onLinkClick)
     }
   }, [])
 
   return route
 }
 
-export function go(to: string) {
-  if (window.location.pathname !== to) {
-    window.history.pushState(null, '', to)
-    window.dispatchEvent(new Event('pushstate'))
-    window.scrollTo({ top: 0 })
-  }
-}
-
-export const href = (to: string) => to
+export const go = navigate
+export const href = (to: string) => to.startsWith('/') ? to : '/' + to

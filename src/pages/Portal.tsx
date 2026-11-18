@@ -6,11 +6,9 @@ import {
   BookOpen, 
   Cpu, 
   Sparkles, 
-  Clock, 
-  Info
+  Clock 
 } from 'lucide-react'
 import { COURSES, CourseItem } from '../data/courses'
-import { href } from '../lib/router'
 
 export function Portal() {
   const [filter, setFilter] = useState<'all' | 'live' | 'pipeline'>('all')
@@ -22,15 +20,15 @@ export function Portal() {
   })
 
   return (
-    <div className="mx-auto max-w-[1440px] px-4 lg:px-8 pb-20">
-      <section className="relative pt-12 pb-16 lg:pt-20 lg:pb-24 border-b border-line">
+    <div className="mx-auto max-w-[1780px] px-4 sm:px-6 lg:px-10 pb-16">
+      <section className="relative pt-8 pb-8 sm:pt-10 sm:pb-10 lg:pt-12 lg:pb-12 border-b border-line">
         <div className="absolute inset-0 -z-10 grid-bg opacity-40 [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]" />
         <div className="max-w-4xl">
           <motion.div 
             initial={{ opacity: 0, y: 14 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.3 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-accent-soft text-accent border border-accent/20 mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-accent-soft text-accent border border-accent/20 mb-3"
           >
             <Sparkles size={14} />
             <span>KSU CET Academic Excellence Initiative</span>
@@ -40,7 +38,7 @@ export function Portal() {
             initial={{ opacity: 0, y: 16 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.35, delay: 0.05 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.04]"
+            className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.08]"
           >
             Master Engineering Courses <br />
             <span className="text-accent">Through Interactive Systems.</span>
@@ -50,56 +48,37 @@ export function Portal() {
             initial={{ opacity: 0, y: 16 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.35, delay: 0.1 }}
-            className="text-lg sm:text-xl text-muted mt-6 max-w-2xl leading-relaxed"
+            className="text-base sm:text-lg text-muted mt-3 max-w-3xl leading-relaxed"
           >
             SAC Learn bridges the gap between theoretical KTU syllabus requirements and intuitive comprehension. Zero-latency browser compilers, stepper execution models, and syllabus-synchronized problem banks.
           </motion.p>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 16 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.35, delay: 0.15 }}
-            className="flex flex-wrap items-center gap-3 mt-8"
-          >
-            <a href="/courses/atp/" className="btn btn-primary h-12 px-6 text-[15px] font-medium shadow-sm">
-              Launch ATP Studio
-              <ArrowRight size={17} />
-            </a>
-            <a href="/courses/dsa/" className="btn h-12 px-6 text-[15px] font-medium">
-              Launch Atlas DSA Studio
-            </a>
-            <a href={href('/about')} className="btn h-12 px-5 text-[15px] font-medium text-muted hover:text-fg">
-              <Info size={16} />
-              About SAC Learn
-            </a>
-          </motion.div>
         </div>
       </section>
 
-      <section id="courses-catalog" className="pt-16 pb-20 border-b border-line scroll-mt-20">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+      <section id="courses-catalog" className="pt-8 pb-16 sm:pt-10 sm:pb-20 border-b border-line scroll-mt-20">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
-            <div className="text-xs font-semibold tracking-wider uppercase text-accent mb-2">Curriculum Catalog</div>
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">Available & Upcoming Portals</h2>
-            <p className="text-muted text-sm sm:text-base mt-2">Explore active interactive studios or preview the development roadmap.</p>
+            <div className="text-xs font-semibold tracking-wider uppercase text-accent mb-1.5">Curriculum Catalog</div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight">Available & Upcoming Portals</h2>
+            <p className="text-muted text-sm sm:text-base mt-1">Explore active interactive studios or preview the development roadmap.</p>
           </div>
 
-          <div className="flex items-center p-1 bg-surface rounded-xl border border-line self-start md:self-auto">
+          <div className="flex items-center p-1 bg-surface rounded-xl border border-line self-start sm:self-auto shrink-0">
             <button
               onClick={() => setFilter('all')}
-              className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all ${filter === 'all' ? 'bg-elevated text-fg shadow-sm' : 'text-muted hover:text-fg'}`}
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${filter === 'all' ? 'bg-elevated text-fg shadow-sm' : 'text-muted hover:text-fg'}`}
             >
               All ({COURSES.length})
             </button>
             <button
               onClick={() => setFilter('live')}
-              className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all ${filter === 'live' ? 'bg-elevated text-fg shadow-sm' : 'text-muted hover:text-fg'}`}
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${filter === 'live' ? 'bg-elevated text-fg shadow-sm' : 'text-muted hover:text-fg'}`}
             >
               Live ({COURSES.filter(c => c.status === 'live').length})
             </button>
             <button
               onClick={() => setFilter('pipeline')}
-              className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all ${filter === 'pipeline' ? 'bg-elevated text-fg shadow-sm' : 'text-muted hover:text-fg'}`}
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${filter === 'pipeline' ? 'bg-elevated text-fg shadow-sm' : 'text-muted hover:text-fg'}`}
             >
               Pipeline ({COURSES.filter(c => c.status !== 'live').length})
             </button>
@@ -134,15 +113,11 @@ export function Portal() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-semibold leading-snug tracking-tight mb-2">
+                  <h3 className="text-xl font-semibold leading-snug tracking-tight mb-3">
                     {course.title}
                   </h3>
 
-                  <p className="text-xs text-subtle mb-4">
-                    {course.category} · {course.semester} · {course.credits} Credits
-                  </p>
-
-                  <p className="text-sm text-muted leading-relaxed mb-6">
+                  <p className="text-sm text-muted leading-relaxed mb-5">
                     {course.description}
                   </p>
 
@@ -155,24 +130,7 @@ export function Portal() {
                   </div>
                 </div>
 
-                <div>
-                  {isLive && course.metrics && (
-                    <div className="grid grid-cols-3 gap-2 py-3 px-3 rounded-lg bg-surface border border-line mb-4 text-center">
-                      <div>
-                        <div className="text-sm font-semibold">{course.metrics.modules}</div>
-                        <div className="text-[10px] text-subtle uppercase">Modules</div>
-                      </div>
-                      <div>
-                        <div className="text-sm font-semibold">{course.metrics.topics}</div>
-                        <div className="text-[10px] text-subtle uppercase">Topics</div>
-                      </div>
-                      <div>
-                        <div className="text-sm font-semibold">{course.metrics.visualizers}</div>
-                        <div className="text-[10px] text-subtle uppercase">Visualizers</div>
-                      </div>
-                    </div>
-                  )}
-
+                <div className="pt-2">
                   {isLive ? (
                     <a 
                       href={course.route} 
@@ -197,10 +155,10 @@ export function Portal() {
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="max-w-3xl mb-12">
-          <div className="text-xs font-semibold tracking-wider uppercase text-accent mb-2">System Design</div>
-          <h2 className="text-3xl font-semibold tracking-tight">Built Different From Static PDF Notes</h2>
+      <section className="py-12 sm:py-16">
+        <div className="max-w-3xl mb-8 sm:mb-10">
+          <div className="text-xs font-semibold tracking-wider uppercase text-accent mb-1.5">System Design</div>
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">Built Different From Static PDF Notes</h2>
           <p className="text-muted text-sm sm:text-base mt-2">
             Traditional engineering study consists of reading static PDFs without runtime feedback. SAC Learn embeds computational environments directly inside the syllabus.
           </p>

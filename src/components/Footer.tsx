@@ -27,7 +27,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-line bg-surface/30 backdrop-blur-md">
-      <div className="mx-auto max-w-[1440px] px-4 lg:px-8 py-7 sm:py-9 flex flex-col md:flex-row items-center justify-between gap-5 text-sm">
+      <div className="mx-auto max-w-[1780px] px-4 sm:px-6 lg:px-10 py-7 sm:py-9 flex flex-col md:flex-row items-center justify-between gap-5 text-sm">
         <div className="text-center md:text-left text-muted">
           <span className="text-accent font-semibold mr-1">©</span>
           <span className="text-fg font-medium">2026 SAC LEARN</span>
@@ -145,7 +145,7 @@ export function Footer() {
         </div>
 
         <div className="text-center md:text-right text-muted">
-          Developed by <span className="font-semibold text-accent">KSU SAC Web Team</span>
+          Developed by <span className="font-semibold text-accent">KSU SAC</span>
         </div>
       </div>
     </footer>
