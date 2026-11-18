@@ -21,10 +21,13 @@ export function Navbar({ section }: { section: string }) {
     <header className="sticky top-0 z-30 border-b border-line bg-bg/80 backdrop-blur-xl">
       <div className="mx-auto max-w-[1440px] flex items-center gap-2 h-16 px-4 lg:px-6">
         <a href={href('/')} className="flex items-center gap-2.5 mr-3 shrink-0">
+          <img src="./ksucet-light.png" alt="KSU CET" className="h-10 w-auto dark:hidden" />
+          <img src="./ksucet-dark.png" alt="KSU CET" className="h-10 w-auto hidden dark:block" />
+          <span className="w-px h-9 bg-line mx-1" aria-hidden />
           <img src="./logo.png" alt="SAC LEARN logo" className="h-11 w-auto rounded-lg bg-white" />
-          <span className="leading-tight">
+          <span className="leading-tight hidden sm:block">
             <span className="block font-extrabold text-[15px] tracking-tight">SAC LEARN</span>
-            <span className="block text-[11px] text-subtle font-medium">A KSU CET unit initiative</span>
+            <span className="block text-[11px] text-subtle font-medium">An interactive learning platform</span>
           </span>
         </a>
         <nav className="hidden xl:flex items-center gap-0.5">
