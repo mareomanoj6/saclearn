@@ -1,6 +1,6 @@
-import { ExternalLink, Globe, Mail, Phone, Users } from 'lucide-react'
+import { ExternalLink, Globe, Mail, Users } from 'lucide-react'
 import { InstagramIcon, YoutubeIcon, WhatsappIcon } from '../components/BrandIcons'
-import { LINKS, TEAM, telHref } from '../data/links'
+import { LINKS, MANAGERS, Manager } from '../data/links'
 
 const WHAT_WE_DO = [
   ['Interactive notes', 'Syllabus-based study notes for every topic, with key takeaways up front.'],
@@ -36,12 +36,23 @@ function LinkRow({ icon, name, sub, url }: { icon: React.ReactNode; name: string
     : <div className={cls + ' opacity-70'}>{inner}</div>
 }
 
-function Person({ name, phone, role }: { name: string; phone: string; role?: string }) {
+function ManagerCard({ name, phone, waUrl }: Manager) {
   return (
-    <div className="rounded-xl border border-line p-4 bg-elevated">
-      <div className="font-medium">{name}</div>
-      {role && <div className="text-xs text-subtle mb-2">{role}</div>}
-      <a href={telHref(phone)} className="mt-1 inline-flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors"><Phone size={14} />{phone}</a>
+    <div className="rounded-xl border border-line p-4 bg-elevated flex flex-col justify-between gap-3 group hover:border-accent transition-colors">
+      <div>
+        <div className="font-medium text-fg">{name}</div>
+        <div className="text-xs text-subtle mt-0.5">Website Manager</div>
+      </div>
+      <a 
+        href={waUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        aria-label={`Chat with ${name} on WhatsApp`}
+        className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-good-soft text-good hover:bg-good hover:text-white transition-colors"
+      >
+        <WhatsappIcon width={14} height={14} />
+        <span>{phone}</span>
+      </a>
     </div>
   )
 }
@@ -75,19 +86,15 @@ export function About() {
             <LinkRow icon={<Globe size={20} strokeWidth={1.8} />} name="SAC website" sub="sac.ksucet.in" url={LINKS.sacWebsite} />
             <LinkRow icon={<YoutubeIcon />} name="YouTube" sub={LINKS.youtube.replace(/^https?:\/\//, '')} url={LINKS.youtube} />
             <LinkRow icon={<WhatsappIcon />} name="WhatsApp" sub="Chat with us" url={LINKS.whatsapp} />
-            <LinkRow icon={<Mail size={20} strokeWidth={1.8} />} name="Email" sub={LINKS.email} url={LINKS.email ? 'mailto:' + LINKS.email : ''} />
+            <LinkRow icon={<Mail size={20} strokeWidth={1.8} />} name="Email" sub={LINKS.email} url={'mailto:' + LINKS.email} />
           </div>
         </Card>
 
         <Card title="Contact our team" icon={<Users size={20} />}>
-          <div className="grid grid-cols-1 gap-5">
-            <div>
-              <div className="label mb-2">Website manager</div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3"><Person {...TEAM.manager} /></div>
-            </div>
-            <div>
-              <div className="label mb-2">Web team</div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">{TEAM.web.map(m => <Person key={m.name} {...m} />)}</div>
+          <div>
+            <div className="label mb-3">Website Managers</div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {MANAGERS.map(m => <ManagerCard key={m.name} {...m} />)}
             </div>
           </div>
         </Card>
