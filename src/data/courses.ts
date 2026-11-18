@@ -20,6 +20,25 @@ export interface CourseItem {
 
 export const COURSES: CourseItem[] = [
   {
+    id: 'dsa',
+    code: 'CST201',
+    title: 'Data Structures & Algorithms (Atlas)',
+    semester: 'S3',
+    scheme: 'KTU 2024 Scheme',
+    credits: 4,
+    category: 'Computer Science & Engineering',
+    status: 'live',
+    description: 'Atlas: Data structures and algorithms explained with step-by-step visual simulations, asymptotic complexity analyzers, and C code execution.',
+    route: '/courses/dsa/',
+    accentColor: '#059669',
+    tags: ['Trees & Graphs', 'Visual Simulations', 'Memory Allocation', 'C Code', 'Sorting'],
+    metrics: {
+      modules: 5,
+      topics: 24,
+      visualizers: 18
+    }
+  },
+  {
     id: 'atp',
     code: 'UCEST105',
     title: 'Algorithmic Thinking with Python',
@@ -32,20 +51,6 @@ export const COURSES: CourseItem[] = [
     route: '#',
     accentColor: '#2563eb',
     tags: ['Python', 'Algorithms', 'Interactive Visualizers', 'PYQ Analysis']
-  },
-  {
-    id: 'dsa',
-    code: 'CST201',
-    title: 'Data Structures & Algorithms',
-    semester: 'S3',
-    scheme: 'KTU 2024 Scheme',
-    credits: 4,
-    category: 'Computer Science & Engineering',
-    status: 'development',
-    description: 'Step-through animation of linear and non-linear data structures, asymptotic complexity visualizer, and dynamic programming memory matrices.',
-    route: '#',
-    accentColor: '#059669',
-    tags: ['Trees & Graphs', 'Memory Allocation', 'Sorting', 'DP']
   },
   {
     id: 'oop',

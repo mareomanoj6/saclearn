@@ -13,11 +13,11 @@ import { COURSES, CourseItem } from '../data/courses'
 import { href } from '../lib/router'
 
 export function Portal() {
-  const [filter, setFilter] = useState<'all' | 'development' | 'planned'>('all')
+  const [filter, setFilter] = useState<'all' | 'live' | 'pipeline'>('all')
 
   const filteredCourses = COURSES.filter(c => {
-    if (filter === 'development') return c.status === 'development'
-    if (filter === 'planned') return c.status === 'planned'
+    if (filter === 'live') return c.status === 'live'
+    if (filter === 'pipeline') return c.status !== 'live'
     return true
   })
 
@@ -61,11 +61,14 @@ export function Portal() {
             transition={{ duration: 0.35, delay: 0.15 }}
             className="flex flex-wrap items-center gap-3 mt-8"
           >
-            <a href="#courses-catalog" className="btn btn-primary h-12 px-6 text-[15px] font-medium shadow-sm">
-              Explore Course Catalog
+            <a href="/courses/dsa/" className="btn btn-primary h-12 px-6 text-[15px] font-medium shadow-sm">
+              Launch Atlas DSA Studio
               <ArrowRight size={17} />
             </a>
-            <a href={href('/about')} className="btn h-12 px-6 text-[15px] font-medium">
+            <a href="#courses-catalog" className="btn h-12 px-6 text-[15px] font-medium">
+              Browse Course Catalog
+            </a>
+            <a href={href('/about')} className="btn h-12 px-5 text-[15px] font-medium text-muted hover:text-fg">
               <Info size={16} />
               About SAC Learn
             </a>
@@ -78,7 +81,7 @@ export function Portal() {
           <div>
             <div className="text-xs font-semibold tracking-wider uppercase text-accent mb-2">Curriculum Catalog</div>
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">Available & Upcoming Portals</h2>
-            <p className="text-muted text-sm sm:text-base mt-2">Explore courses currently undergoing syllabus integration and development.</p>
+            <p className="text-muted text-sm sm:text-base mt-2">Explore active interactive studios or preview the development roadmap.</p>
           </div>
 
           <div className="flex items-center p-1 bg-surface rounded-xl border border-line self-start md:self-auto">
@@ -89,27 +92,30 @@ export function Portal() {
               All ({COURSES.length})
             </button>
             <button
-              onClick={() => setFilter('development')}
-              className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all ${filter === 'development' ? 'bg-elevated text-fg shadow-sm' : 'text-muted hover:text-fg'}`}
+              onClick={() => setFilter('live')}
+              className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all ${filter === 'live' ? 'bg-elevated text-fg shadow-sm' : 'text-muted hover:text-fg'}`}
             >
-              In Development ({COURSES.filter(c => c.status === 'development').length})
+              Live ({COURSES.filter(c => c.status === 'live').length})
             </button>
             <button
-              onClick={() => setFilter('planned')}
-              className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all ${filter === 'planned' ? 'bg-elevated text-fg shadow-sm' : 'text-muted hover:text-fg'}`}
+              onClick={() => setFilter('pipeline')}
+              className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all ${filter === 'pipeline' ? 'bg-elevated text-fg shadow-sm' : 'text-muted hover:text-fg'}`}
             >
-              Planned ({COURSES.filter(c => c.status === 'planned').length})
+              Pipeline ({COURSES.filter(c => c.status !== 'live').length})
             </button>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCourses.map((course: CourseItem) => {
+            const isLive = course.status === 'live'
             const isDev = course.status === 'development'
             return (
               <div 
                 key={course.id}
-                className="card flex flex-col justify-between p-6 border-line/80 hover:border-line transition-all duration-200"
+                className={`card flex flex-col justify-between p-6 transition-all duration-200 ${
+                  isLive ? 'border-accent/50 shadow-sm hover:border-accent' : 'border-line/80 hover:border-line'
+                }`}
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-4">
@@ -117,10 +123,14 @@ export function Portal() {
                       {course.code}
                     </span>
                     <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full ${
-                      isDev ? 'bg-warn-soft text-warn' : 'bg-surface-2 text-subtle'
+                      isLive 
+                        ? 'bg-good-soft text-good' 
+                        : isDev 
+                          ? 'bg-warn-soft text-warn' 
+                          : 'bg-surface-2 text-subtle'
                     }`}>
-                      <span className={`w-1.5 h-1.5 rounded-full ${isDev ? 'bg-warn' : 'bg-subtle'}`} />
-                      {isDev ? 'In Development' : 'Scheduled'}
+                      <span className={`w-1.5 h-1.5 rounded-full ${isLive ? 'bg-good animate-pulse' : isDev ? 'bg-warn' : 'bg-subtle'}`} />
+                      {isLive ? 'Live Studio' : isDev ? 'In Development' : 'Scheduled'}
                     </span>
                   </div>
 
@@ -146,13 +156,40 @@ export function Portal() {
                 </div>
 
                 <div>
-                  <button 
-                    disabled 
-                    className="btn w-full h-11 justify-center text-sm font-medium opacity-70 cursor-not-allowed bg-surface border border-line"
-                  >
-                    <Clock size={15} />
-                    {isDev ? 'Integration in Progress' : 'Curriculum Scheduled'}
-                  </button>
+                  {isLive && course.metrics && (
+                    <div className="grid grid-cols-3 gap-2 py-3 px-3 rounded-lg bg-surface border border-line mb-4 text-center">
+                      <div>
+                        <div className="text-sm font-semibold">{course.metrics.modules}</div>
+                        <div className="text-[10px] text-subtle uppercase">Modules</div>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold">{course.metrics.topics}</div>
+                        <div className="text-[10px] text-subtle uppercase">Topics</div>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold">{course.metrics.visualizers}</div>
+                        <div className="text-[10px] text-subtle uppercase">Visualizers</div>
+                      </div>
+                    </div>
+                  )}
+
+                  {isLive ? (
+                    <a 
+                      href={course.route} 
+                      className="btn btn-primary w-full h-11 justify-center text-sm font-medium"
+                    >
+                      Enter Course Workspace
+                      <ArrowRight size={16} />
+                    </a>
+                  ) : (
+                    <button 
+                      disabled 
+                      className="btn w-full h-11 justify-center text-sm font-medium opacity-70 cursor-not-allowed bg-surface border border-line"
+                    >
+                      <Clock size={15} />
+                      {isDev ? 'Integration in Progress' : 'Curriculum Scheduled'}
+                    </button>
+                  )}
                 </div>
               </div>
             )

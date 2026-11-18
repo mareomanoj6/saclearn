@@ -2,6 +2,22 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/courses/dsa/:path*",
+      "destination": "https://atlas-sac.vercel.app/courses/dsa/:path*"
+    },
+    {
+      "source": "/courses/dsa",
+      "destination": "https://atlas-sac.vercel.app/courses/dsa/"
+    },
+    {
+      "source": "/course/dsa/:path*",
+      "destination": "https://atlas-sac.vercel.app/courses/dsa/:path*"
+    },
+    {
+      "source": "/course/dsa",
+      "destination": "https://atlas-sac.vercel.app/courses/dsa/"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

@@ -42,6 +42,10 @@ export function Navbar({ section }: { section: string }) {
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
+          <a href="/courses/dsa/" className="btn btn-primary h-9 px-3.5 text-xs font-medium hidden sm:inline-flex">
+            Launch DSA Studio
+          </a>
+
           <button onClick={toggle} className="btn btn-icon" aria-label="Toggle light/dark mode" title="Toggle theme">
             <AnimatePresence mode="wait" initial={false}>
               <motion.span key={theme} initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.18 }} className="grid">
