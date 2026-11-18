@@ -5,6 +5,7 @@ export const LINKS = {
   youtube: 'https://www.youtube.com/@STUDENTASSISTCELLCET',
   email: 'ksucetsac2024@gmail.com',
   whatsapp: 'https://wa.me/919207920722',
+  suggestWhatsapp: 'https://wa.me/917306641617',
 }
 
 export interface Manager {

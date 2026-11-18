@@ -179,7 +179,7 @@ export function Portal() {
 
               <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0 lg:min-w-[220px]">
                 <a
-                  href={LINKS.whatsapp}
+                  href={LINKS.suggestWhatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary h-11 px-4 text-xs font-semibold justify-center shadow-sm"
