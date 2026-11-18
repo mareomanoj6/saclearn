@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { 
-  Sun, 
-  Moon, 
-  Menu, 
+import {
+  Sun,
+  Moon,
+  Menu,
   X,
   LayoutGrid,
   Info,
@@ -63,9 +63,9 @@ export function Navbar({ section }: { section: string }) {
             >
               <LayoutGrid size={15} />
               <span>Courses</span>
-              <ChevronDown 
-                size={14} 
-                className={`transition-transform duration-200 ${coursesOpen ? 'rotate-180 text-accent' : 'text-subtle'}`} 
+              <ChevronDown
+                size={14}
+                className={`transition-transform duration-200 ${coursesOpen ? 'rotate-180 text-accent' : 'text-subtle'}`}
               />
             </button>
 
@@ -102,7 +102,7 @@ export function Navbar({ section }: { section: string }) {
                           </span>
                         </div>
                         <div className="text-xs text-subtle mt-0.5">
-                          UCEST105 · S1/S2 · In-browser Python sandbox, animations & PYQs
+                          UCEST105 · S1 · In-browser Python sandbox, animations & PYQs
                         </div>
                       </div>
                     </a>
@@ -179,9 +179,9 @@ export function Navbar({ section }: { section: string }) {
             </AnimatePresence>
           </button>
 
-          <button 
-            className="btn btn-icon md:hidden" 
-            onClick={() => setOpen(o => !o)} 
+          <button
+            className="btn btn-icon md:hidden"
+            onClick={() => setOpen(o => !o)}
             aria-label="Menu"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
@@ -191,19 +191,19 @@ export function Navbar({ section }: { section: string }) {
 
       <AnimatePresence>
         {open && (
-          <motion.nav 
-            initial={{ height: 0, opacity: 0 }} 
-            animate={{ height: 'auto', opacity: 1 }} 
-            exit={{ height: 0, opacity: 0 }} 
+          <motion.nav
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
             className="md:hidden overflow-hidden border-t border-line bg-surface/95 backdrop-blur-xl"
           >
             <div className="p-4 flex flex-col gap-3">
               <div className="text-[11px] font-semibold uppercase tracking-wider text-subtle px-1">
                 Active Courses
               </div>
-              <a 
-                href="/courses/atp/" 
-                onClick={() => setOpen(false)} 
+              <a
+                href="/courses/atp/"
+                onClick={() => setOpen(false)}
                 className="flex items-center justify-between p-3 rounded-xl border border-line bg-elevated text-sm font-medium"
               >
                 <div className="flex items-center gap-2.5">
@@ -213,9 +213,9 @@ export function Navbar({ section }: { section: string }) {
                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-good-soft text-good">Live</span>
               </a>
 
-              <a 
-                href="/courses/dsa/" 
-                onClick={() => setOpen(false)} 
+              <a
+                href="/courses/dsa/"
+                onClick={() => setOpen(false)}
                 className="flex items-center justify-between p-3 rounded-xl border border-line bg-elevated text-sm font-medium"
               >
                 <div className="flex items-center gap-2.5">
@@ -226,9 +226,9 @@ export function Navbar({ section }: { section: string }) {
               </a>
 
               <div className="pt-2 border-t border-line flex flex-col gap-1">
-                <a 
-                  href={href('/about')} 
-                  onClick={() => setOpen(false)} 
+                <a
+                  href={href('/about')}
+                  onClick={() => setOpen(false)}
                   className="tab justify-start"
                 >
                   <Info size={16} />
