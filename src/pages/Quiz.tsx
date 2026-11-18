@@ -43,7 +43,7 @@ export function Quiz({ initialTopic, initialModule }: { initialTopic: string | n
         </select>
         <div className="label mt-6 mb-3">2 · Number of questions</div>
         <div className="flex gap-2">{[5, 10, 20].map(n => <button key={n} className={`tab ${count === n ? 'tab-active' : ''}`} onClick={() => setCount(n)}>{n}</button>)}<button className={`tab ${count === 999 ? 'tab-active' : ''}`} onClick={() => setCount(999)}>All ({pool.length})</button></div>
-        <button className="btn btn-primary h-11 px-6 mt-8" onClick={start} disabled={!pool.length}><Zap size={16} />Start · {Math.min(count, pool.length)} questions from {scopeLabel(scope)}</button>
+        <button className="btn btn-primary !h-auto min-h-11 py-2.5 px-6 mt-8 w-full sm:w-auto !whitespace-normal text-center" onClick={start} disabled={!pool.length}><Zap size={16} />Start · {Math.min(count, pool.length)} questions from {scopeLabel(scope)}</button>
       </div>
     </div>
   )

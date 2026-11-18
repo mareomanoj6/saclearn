@@ -33,7 +33,7 @@ export default function App() {
 
   return (
     <TryItProvider>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-[100dvh] flex flex-col">
         {section !== 'slides' && <Navbar section={section} />}
         <main className="flex-1">{page}</main>
         {section !== 'slides' && <Footer />}

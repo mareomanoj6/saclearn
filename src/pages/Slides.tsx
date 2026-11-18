@@ -101,18 +101,18 @@ export function Slides({ moduleId }: { moduleId: number }) {
   }, [nav, m.id, slides.length])
   const s = slides[i]
   return (
-    <div className="h-screen flex flex-col bg-bg overflow-hidden">
+    <div className="h-[100dvh] flex flex-col bg-bg overflow-hidden safe-top">
       <div className="h-1 bg-surface-2"><motion.div className="h-full bg-accent" animate={{ width: `${((i + 1) / slides.length) * 100}%` }} /></div>
-      <div className="flex items-center gap-2 px-5 h-14 border-b border-line">
+      <div className="flex items-center gap-1 sm:gap-2 px-3 sm:px-5 h-14 border-b border-line">
         <a href={href(`/module/${m.id}`)} className="btn btn-ghost btn-sm"><X size={15} />Exit</a>
-        <div className="flex gap-1 ml-2">{MODULES.map(x => <a key={x.id} href={href(`/slides/${x.id}`)} className={`tab !py-1 !text-xs ${x.id === m.id ? 'tab-active' : ''}`}>M{x.id}</a>)}</div>
+        <div className="flex gap-0.5 sm:gap-1 ml-1 sm:ml-2">{MODULES.map(x => <a key={x.id} href={href(`/slides/${x.id}`)} className={`tab !py-1 !text-xs ${x.id === m.id ? 'tab-active' : ''}`}>M{x.id}</a>)}</div>
         <div className="ml-auto flex items-center gap-2 text-xs text-subtle">
           <span className="hidden sm:inline"><span className="kbd">←</span> <span className="kbd">→</span> navigate · <span className="kbd">F</span> fullscreen</span>
           <button className="btn btn-sm btn-icon" onClick={toggle} aria-label="Theme">{theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}</button>
-          <button className="btn btn-sm btn-icon" onClick={() => (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.())} aria-label="Fullscreen">{fs ? <Minimize2 size={15} /> : <Maximize2 size={15} />}</button>
+          <button className="btn btn-sm btn-icon hidden sm:inline-flex" onClick={() => (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.())} aria-label="Fullscreen">{fs ? <Minimize2 size={15} /> : <Maximize2 size={15} />}</button>
         </div>
       </div>
-      <div className="flex-1 relative overflow-hidden">
+      <div className="flex-1 relative overflow-hidden" onTouchStart={e => { (e.currentTarget as any)._x = e.touches[0].clientX; (e.currentTarget as any)._y = e.touches[0].clientY }} onTouchEnd={e => { const el = e.currentTarget as any; const dx = e.changedTouches[0].clientX - el._x, dy = e.changedTouches[0].clientY - el._y; if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) nav(dx < 0 ? 1 : -1) }}>
         <AnimatePresence mode="wait" custom={dir}>
           <motion.div key={s.key} custom={dir} initial={{ opacity: 0, x: dir * 60 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: dir * -60 }} transition={{ duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}
             className="absolute inset-0 overflow-auto scrollbar-thin">

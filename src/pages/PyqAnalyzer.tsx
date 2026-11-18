@@ -57,7 +57,7 @@ export function PyqAnalyzer() {
       </div>
 
       {tab === 'practice' ? <Practice /> : (<>
-      <div className="grid lg:grid-cols-[1.4fr_1fr] gap-5 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-5 mb-8">
         {/* heatmap */}
         <div className="card p-5">
           <div className="flex items-center justify-between mb-4"><div className="font-medium">Topic heatmap</div><div className="text-xs text-subtle">darker = asked more often</div></div>
@@ -65,7 +65,7 @@ export function PyqAnalyzer() {
             {MODULES.map(m => (
               <div key={m.id} className="flex gap-3 items-stretch">
                 <div className="w-10 shrink-0 grid place-items-center rounded-lg bg-surface-2 text-xs font-semibold">M{m.id}</div>
-                <div className="flex-1 grid gap-2" style={{ gridTemplateColumns: `repeat(${m.topics.length}, minmax(0, 1fr))` }}>
+                <div className="flex-1 min-w-0 grid gap-2" style={{ gridTemplateColumns: `repeat(auto-fit, minmax(92px, 1fr))` }}>
                   {m.topics.map(t => {
                     const s = stats.find(x => x.topicId === t.id)!
                     const a = s.count / maxCount
@@ -117,7 +117,7 @@ export function PyqAnalyzer() {
       <div className="card p-5 mb-8">
         <div className="flex items-center gap-2 font-medium mb-1"><Repeat size={16} className="text-accent" />Questions that keep coming back</div>
         <p className="text-sm text-muted mb-4">Counted from the loaded papers — master these patterns first.</p>
-        <div className="grid md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {patterns.map(p => (
             <a key={p.id} href={href(`/topic/${p.topicId}`)} className="rounded-xl border border-line p-3 hover:border-accent transition-colors">
               <div className="flex items-start gap-2"><span className="text-sm font-medium flex-1">{p.label}</span><span className="chip shrink-0">{p.papers} paper{p.papers > 1 ? 's' : ''}</span></div>
@@ -127,7 +127,7 @@ export function PyqAnalyzer() {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* mapper probe */}
         <div className="card p-5">
           <div className="flex items-center gap-2 font-medium mb-1"><WandSparkles size={16} className="text-accent" />Live topic mapper</div>

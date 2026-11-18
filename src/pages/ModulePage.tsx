@@ -10,8 +10,8 @@ export function ModulePage({ id }: { id: number }) {
   const acc = MODULE_ACCENT[m.id]
   return (
     <div className="mx-auto max-w-[1100px] px-4 lg:px-6 py-10">
-      <div className="flex gap-2 mb-6">{MODULES.map(x => <a key={x.id} href={href(`/module/${x.id}`)} className={`tab ${x.id === m.id ? 'tab-active' : ''}`}>Module {x.id}</a>)}</div>
-      <div className="relative overflow-hidden rounded-3xl border border-line p-8 mb-8" style={{ background: 'var(--surface)' }}>
+      <div className="flex gap-2 mb-6 overflow-x-auto scrollbar-thin -mx-1 px-1">{MODULES.map(x => <a key={x.id} href={href(`/module/${x.id}`)} className={`tab ${x.id === m.id ? 'tab-active' : ''}`}>Module {x.id}</a>)}</div>
+      <div className="relative overflow-hidden rounded-3xl border border-line p-5 sm:p-8 mb-8" style={{ background: 'var(--surface)' }}>
         <div className="label">Module {m.id}</div>
         <h1 className="text-3xl lg:text-4xl font-medium tracking-tight mt-1">{m.title}</h1>
         <p className="text-muted mt-2">{m.tagline}</p>

@@ -52,7 +52,7 @@ export function Flashcards({ initialTopic, initialModule }: { initialTopic: stri
         {[0, 1, 2, 3, 4].map(m => <button key={m} className={`tab ${mod === m ? 'tab-active' : ''}`} onClick={() => { setMod(m); setTopic('') }}>{m === 0 ? 'All modules' : `Module ${m}`}</button>)}
       </div>
       <div className="flex flex-wrap items-center gap-2 mb-6">
-        <select className="input" value={topic} onChange={e => setTopic(e.target.value)} aria-label="Topic filter">
+        <select className="input w-full sm:w-auto" value={topic} onChange={e => setTopic(e.target.value)} aria-label="Topic filter">
           <option value="">All topics</option>
           {topics.map(t => <option key={t.id} value={t.id}>M{t.moduleId} · {t.title}</option>)}
         </select>

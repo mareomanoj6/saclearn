@@ -12,7 +12,7 @@ const WHAT_WE_DO = [
 
 function Card({ title, children, icon }: { title: string; children: React.ReactNode; icon?: React.ReactNode }) {
   return (
-    <section className="rounded-2xl border border-line p-6 lg:p-8" style={{ background: 'var(--surface)' }}>
+    <section className="rounded-2xl border border-line p-5 sm:p-6 lg:p-8" style={{ background: 'var(--surface)' }}>
       <h2 className="text-xl font-medium mb-4 flex items-center gap-2 text-accent">{icon}{title}</h2>
       {children}
     </section>
@@ -30,7 +30,7 @@ function LinkRow({ icon, name, sub, url }: { icon: React.ReactNode; name: string
       {url && <ExternalLink size={15} className="text-subtle group-hover:text-accent transition-colors" />}
     </>
   )
-  const cls = 'group flex items-center gap-3 rounded-xl border border-line p-3 bg-elevated'
+  const cls = 'group min-w-0 flex items-center gap-3 rounded-xl border border-line p-3 bg-elevated'
   return url
     ? <a href={url} target="_blank" rel="noopener noreferrer" className={cls + ' hover:border-accent transition-colors'}>{inner}</a>
     : <div className={cls + ' opacity-70'}>{inner}</div>
@@ -52,13 +52,13 @@ export function About() {
       <div className="label">About us</div>
       <h1 className="text-3xl lg:text-4xl font-medium tracking-tight mt-1 mb-8">About SAC LEARN</h1>
 
-      <div className="grid gap-6">
+      <div className="grid grid-cols-1 gap-6">
         <Card title="Our mission">
           <p className="text-muted leading-relaxed mb-6">
             KSU CET SAC Learn was created by students, for students. We make it effortless to find study materials, past question papers, and the academic support you need to succeed through interactive and fun methods.
           </p>
           <h3 className="font-medium mb-3">What we do on this website</h3>
-          <ul className="grid gap-3">
+          <ul className="grid grid-cols-1 gap-3">
             {WHAT_WE_DO.map(([t, d]) => (
               <li key={t} className="flex gap-3 text-sm leading-relaxed">
                 <span className="mt-2 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: 'var(--accent)' }} />
@@ -69,7 +69,7 @@ export function About() {
         </Card>
 
         <Card title="Connect with us">
-          <div className="grid sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <LinkRow icon={<InstagramIcon />} name="KSU CET Unit" sub="instagram.com/ksu.cet" url={LINKS.instagramKsuCet} />
             <LinkRow icon={<InstagramIcon />} name="SAC CET" sub="instagram.com/studentassistcell_cet" url={LINKS.instagramSacCet} />
             <LinkRow icon={<Globe size={20} strokeWidth={1.8} />} name="SAC website" sub="sac.ksucet.in" url={LINKS.sacWebsite} />
@@ -80,14 +80,14 @@ export function About() {
         </Card>
 
         <Card title="Contact our team" icon={<Users size={20} />}>
-          <div className="grid gap-5">
+          <div className="grid grid-cols-1 gap-5">
             <div>
               <div className="label mb-2">Website manager</div>
-              <div className="grid sm:grid-cols-2 gap-3"><Person {...TEAM.manager} /></div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3"><Person {...TEAM.manager} /></div>
             </div>
             <div>
               <div className="label mb-2">Web team</div>
-              <div className="grid sm:grid-cols-2 gap-3">{TEAM.web.map(m => <Person key={m.name} {...m} />)}</div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">{TEAM.web.map(m => <Person key={m.name} {...m} />)}</div>
             </div>
           </div>
         </Card>

@@ -26,7 +26,7 @@ export function Playground() {
 
   return (
     <div className="mx-auto max-w-[1600px] px-4 lg:px-6 py-6 grid xl:grid-cols-[290px_minmax(0,1fr)] gap-5">
-      <aside className="card p-3 xl:max-h-[calc(100vh-120px)] overflow-auto scrollbar-thin order-2 xl:order-1">
+      <aside className="card p-3 xl:max-h-[calc(100dvh-120px)] overflow-auto scrollbar-thin order-2 xl:order-1">
         <div className="relative mb-3"><Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-subtle" /><input className="input w-full pl-8" placeholder="Search examples" value={q} onChange={e => setQ(e.target.value)} /></div>
         <div className="label flex items-center gap-1.5 px-2 mb-1"><FlaskConical size={13} />Syllabus lab experiments</div>
         {LABS.filter(l => match(l.title)).map(l => (
@@ -46,7 +46,7 @@ export function Playground() {
         <div className="flex flex-wrap items-end gap-3 mb-4">
           <h1 className="text-2xl font-medium">Python Playground</h1>
         </div>
-        <Compiler key={sel.key} initialCode={sel.code} initialStdin={sel.stdin} height="calc(100vh - 210px)"
+        <Compiler key={sel.key} initialCode={sel.code} initialStdin={sel.stdin} height="calc(100dvh - 210px)"
           onChange={c => save('atp-playground', { code: c, stdin: '' })} />
       </div>
     </div>

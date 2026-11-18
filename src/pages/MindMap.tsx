@@ -62,7 +62,7 @@ export function MindMap() {
           <button className="btn btn-sm btn-icon" onClick={() => setZoom(z => Math.min(1.6, z + 0.1))} aria-label="Zoom in"><ZoomIn size={15} /></button>
         </div>
       </div>
-      <div className="card overflow-auto scrollbar-thin grid-bg" style={{ maxHeight: 'calc(100vh - 220px)' }}>
+      <div className="card overflow-auto scrollbar-thin grid-bg" style={{ maxHeight: 'calc(100dvh - 220px)', WebkitOverflowScrolling: 'touch' }}>
         <svg width={W * zoom} height={layout.h * zoom} viewBox={`0 0 ${W} ${layout.h}`} className="block">
           {layout.pos.filter(p => p.parent).map(p => {
             const par = byId.get(p.parent!.id)!

@@ -33,12 +33,12 @@ export function TopicPage({ id, tab }: { id: string; tab: string }) {
   return (
     <div className="mx-auto max-w-[1440px] px-4 lg:px-6 py-6 grid lg:grid-cols-[270px_minmax(0,1fr)] gap-8">
       <aside className="hidden lg:block">
-        <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-auto scrollbar-thin pr-1"><Sidebar activeTopic={topic.id} visited={visited} /></div>
+        <div className="sticky top-24 max-h-[calc(100dvh-7rem)] overflow-auto scrollbar-thin pr-1"><Sidebar activeTopic={topic.id} visited={visited} /></div>
       </aside>
 
       <div className="min-w-0">
         {/* header */}
-        <div className="relative overflow-hidden rounded-3xl border border-line p-6 lg:p-8 mb-6" style={{ background: 'var(--surface)' }}>
+        <div className="relative overflow-hidden rounded-3xl border border-line p-5 sm:p-6 lg:p-8 mb-6" style={{ background: 'var(--surface)' }}>
           <div className="relative">
             <div className="flex items-center gap-2 text-xs font-medium text-subtle mb-3">
               <a href={href(`/module/${mod.id}`)} className="hover:text-accent">Module {mod.id} · {mod.title}</a>
@@ -57,15 +57,15 @@ export function TopicPage({ id, tab }: { id: string; tab: string }) {
         </div>
 
         {/* tabs */}
-        <div className="sticky top-16 z-20 -mx-1 px-1 py-2 bg-bg/85 backdrop-blur-xl mb-4 flex items-center gap-1 overflow-x-auto">
+        <div className="sticky top-[calc(4rem+env(safe-area-inset-top))] z-20 -mx-1 px-1 py-2 bg-bg/85 backdrop-blur-xl mb-4 flex items-center gap-1 overflow-x-auto scrollbar-thin">
           {TABS.map(t => (
-            <button key={t.id} onClick={() => setTab(t.id)} className={`tab relative ${tab === t.id ? 'text-accent' : ''}`}>
+            <button key={t.id} onClick={() => setTab(t.id)} className={`tab relative shrink-0 ${tab === t.id ? 'text-accent' : ''}`}>
               {tab === t.id && <motion.span layoutId="topic-tab" className="absolute inset-0 rounded-[10px] bg-accent-soft" />}
-              <t.icon size={16} className="relative" /><span className="relative">{t.label}</span>
+              <t.icon size={16} className="relative hidden sm:block" /><span className="relative">{t.label}</span>
               {t.id === 'animate' && <span className="relative chip !py-0 !px-1.5 !text-xs">{topic.visualizers.length}</span>}
             </button>
           ))}
-          <button className="btn btn-primary btn-sm ml-auto" onClick={() => open(topic.starterCode, `${topic.title} · starter code`)}><Play size={14} fill="currentColor" />Try it Yourself</button>
+          <button className="btn btn-primary btn-sm ml-auto shrink-0" onClick={() => open(topic.starterCode, `${topic.title} · starter code`)}><Play size={14} fill="currentColor" /><span className="sm:hidden">Try it</span><span className="hidden sm:inline">Try it Yourself</span></button>
         </div>
 
         <AnimatePresence mode="wait">

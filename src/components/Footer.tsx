@@ -11,8 +11,8 @@ export function Footer() {
   ]
   return (
     <footer className="border-t border-line mt-16" style={{ background: 'var(--surface)' }}>
-      <div className="mx-auto max-w-[1440px] px-4 lg:px-6 py-10 flex flex-col items-center gap-5 text-center">
-        <div className="text-sm text-muted">© 2026 SAC LEARN · KSU CET Student Assist Cell</div>
+      <div className="mx-auto max-w-[1440px] px-4 lg:px-6 py-10 safe-bottom flex flex-col items-center gap-5 text-center">
+        <div className="text-sm text-muted text-balance">© 2026 SAC LEARN · KSU CET Student Assist Cell</div>
         <div className="flex items-center gap-2">
           {items.map(i => i.url ? (
             <a key={i.label} href={i.url} target="_blank" rel="noopener noreferrer" aria-label={i.label} title={i.label}
