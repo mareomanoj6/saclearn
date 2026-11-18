@@ -1,5 +1,7 @@
 import { useRoute } from './lib/router'
 import { Navbar } from './components/Navbar'
+import { Footer } from './components/Footer'
+import { About } from './pages/About'
 import { TryItProvider } from './components/TryIt'
 import { Home } from './pages/Home'
 import { ModulePage } from './pages/ModulePage'
@@ -24,6 +26,7 @@ export default function App() {
     case 'flashcards': page = <Flashcards key={query.toString()} initialTopic={query.get('topic')} initialModule={query.get('module')} />; break
     case 'quiz': page = <Quiz key={query.toString()} initialTopic={query.get('topic')} initialModule={query.get('module')} />; break
     case 'playground': page = <Playground />; break
+    case 'about': page = <About />; break
     case 'pyq': page = <PyqAnalyzer />; break
     default: page = <Home />
   }
@@ -33,6 +36,7 @@ export default function App() {
       <div className="min-h-screen flex flex-col">
         {section !== 'slides' && <Navbar section={section} />}
         <main className="flex-1">{page}</main>
+        {section !== 'slides' && <Footer />}
       </div>
     </TryItProvider>
   )

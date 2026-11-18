@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { BookOpen, Presentation, Network, StickyNote, Gamepad2, Terminal, TrendingUp, Sun, Moon, Menu, X } from 'lucide-react'
+import { BookOpen, Presentation, Network, StickyNote, Gamepad2, Terminal, TrendingUp, Info, Sun, Moon, Menu, X } from 'lucide-react'
 import { href } from '../lib/router'
 import { useTheme } from '../lib/theme'
 
@@ -12,6 +12,7 @@ const NAV = [
   { to: '/quiz', match: ['quiz'], label: 'Quiz', icon: Gamepad2 },
   { to: '/playground', match: ['playground'], label: 'Playground', icon: Terminal },
   { to: '/pyq', match: ['pyq'], label: 'PYQ Analyzer', icon: TrendingUp },
+  { to: '/about', match: ['about'], label: 'About', icon: Info },
 ]
 
 export function Navbar({ section }: { section: string }) {
