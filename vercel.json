@@ -2,20 +2,36 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/courses/dsa/assets/:path*",
+      "destination": "https://atlas-sac.vercel.app/assets/:path*"
+    },
+    {
+      "source": "/courses/dsa/sac_learn_logo.png",
+      "destination": "https://atlas-sac.vercel.app/sac_learn_logo.png"
+    },
+    {
       "source": "/courses/dsa/:path*",
-      "destination": "https://atlas-sac.vercel.app/courses/dsa/:path*"
+      "destination": "https://atlas-sac.vercel.app/"
     },
     {
       "source": "/courses/dsa",
-      "destination": "https://atlas-sac.vercel.app/courses/dsa/"
+      "destination": "https://atlas-sac.vercel.app/"
+    },
+    {
+      "source": "/course/dsa/assets/:path*",
+      "destination": "https://atlas-sac.vercel.app/assets/:path*"
+    },
+    {
+      "source": "/course/dsa/sac_learn_logo.png",
+      "destination": "https://atlas-sac.vercel.app/sac_learn_logo.png"
     },
     {
       "source": "/course/dsa/:path*",
-      "destination": "https://atlas-sac.vercel.app/courses/dsa/:path*"
+      "destination": "https://atlas-sac.vercel.app/"
     },
     {
       "source": "/course/dsa",
-      "destination": "https://atlas-sac.vercel.app/courses/dsa/"
+      "destination": "https://atlas-sac.vercel.app/"
     },
     {
       "source": "/(.*)",
