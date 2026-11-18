@@ -22,7 +22,7 @@ export function FlowSymbols() {
         <motion.div key={it.name} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}
           className="card-soft p-3 flex flex-col items-center text-center hover:-translate-y-0.5 transition-transform">
           <svg viewBox="0 0 120 80" className="w-28 h-20">{it.shape}</svg>
-          <div className="text-sm font-semibold mt-1">{it.name}</div>
+          <div className="text-sm font-medium mt-1">{it.name}</div>
           <div className="text-xs text-muted mt-0.5">{it.use}</div>
         </motion.div>
       ))}
@@ -34,25 +34,25 @@ export function VonNeumann() {
   const box = 'card-soft px-4 py-3 text-center'
   return (
     <div className="my-5 grid grid-cols-[1fr_auto_1.6fr_auto_1fr] items-center gap-2 text-sm">
-      <div className={box}><div className="font-semibold">Input</div><div className="text-xs text-muted">Keyboard, mouse, scanner, mic</div></div>
+      <div className={box}><div className="font-medium">Input</div><div className="text-xs text-muted">Keyboard, mouse, scanner, mic</div></div>
       <Arrow />
       <div className="card p-3">
         <div className="label text-center mb-2">CPU</div>
         <div className="grid grid-cols-3 gap-2 text-xs">
-          <div className="rounded-lg bg-accent-soft text-accent font-semibold p-2 text-center">ALU</div>
-          <div className="rounded-lg bg-accent-soft text-accent font-semibold p-2 text-center">Control Unit</div>
-          <div className="rounded-lg bg-accent-soft text-accent font-semibold p-2 text-center">Registers</div>
+          <div className="rounded-lg bg-accent-soft text-accent font-medium p-2 text-center">ALU</div>
+          <div className="rounded-lg bg-accent-soft text-accent font-medium p-2 text-center">Control Unit</div>
+          <div className="rounded-lg bg-accent-soft text-accent font-medium p-2 text-center">Registers</div>
         </div>
         <div className="flex justify-center my-1 text-subtle">⇅</div>
-        <div className="rounded-lg border border-dashed border-line p-2 text-center text-xs font-semibold">Memory (RAM · ROM · Cache)</div>
+        <div className="rounded-lg border border-dashed border-line p-2 text-center text-xs font-medium">Memory (RAM · ROM · Cache)</div>
       </div>
       <Arrow />
-      <div className={box}><div className="font-semibold">Output</div><div className="text-xs text-muted">Monitor, printer, speaker</div></div>
+      <div className={box}><div className="font-medium">Output</div><div className="text-xs text-muted">Monitor, printer, speaker</div></div>
     </div>
   )
 }
 function Arrow() {
-  return <motion.div className="text-accent text-xl font-bold" animate={{ x: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.6 }}>→</motion.div>
+  return <motion.div className="text-accent text-xl font-semibold" animate={{ x: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.6 }}>→</motion.div>
 }
 
 export function MemoryHierarchy() {
@@ -68,7 +68,7 @@ export function MemoryHierarchy() {
           <motion.div key={n} initial={{ opacity: 0, scaleX: 0.6 }} whileInView={{ opacity: 1, scaleX: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
             className="rounded-lg text-center py-2 px-3 text-sm border border-line"
             style={{ width: `${40 + i * 12}%`, background: `color-mix(in srgb, var(--accent) ${28 - i * 4}%, transparent)` }}>
-            <span className="font-semibold">{n}</span> <span className="text-xs text-muted">· {d}</span>
+            <span className="font-medium">{n}</span> <span className="text-xs text-muted">· {d}</span>
           </motion.div>
         ))}
       </div>

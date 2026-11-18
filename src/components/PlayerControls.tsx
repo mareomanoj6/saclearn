@@ -27,7 +27,7 @@ export function PlayerControls({ s, caption }: { s: Stepper; caption?: string })
         <div className="flex items-center gap-1 text-xs">
           <span className="text-subtle mr-1">Speed</span>
           {SPEEDS.map(v => (
-            <button key={v} onClick={() => s.setSpeed(v)} className={`px-2 h-7 rounded-md font-semibold ${s.speed === v ? 'bg-accent text-accent-fg' : 'text-muted hover:bg-surface-2'}`}>{v}×</button>
+            <button key={v} onClick={() => s.setSpeed(v)} className={`px-2 h-7 rounded-md font-medium ${s.speed === v ? 'bg-accent text-accent-fg' : 'text-muted hover:bg-surface-2'}`}>{v}×</button>
           ))}
         </div>
       </div>

@@ -45,7 +45,7 @@ export function PyqAnalyzer() {
       <div className="flex flex-wrap items-end gap-4 mb-6">
         <div>
           <div className="label">Previous Year Questions</div>
-          <h1 className="text-3xl font-extrabold tracking-tight">PYQ Analyzer</h1>
+          <h1 className="text-3xl font-medium">PYQ Analyzer</h1>
           <p className="text-muted mt-1 max-w-2xl">Real UCEST105 papers mapped to syllabus topics — see which topics and question patterns repeat most, then practise with a fresh set of questions written in the same style.</p>
         </div>
         <span className="chip ml-auto"><Database size={12} />{papers.length} paper(s) · {totalQuestions} questions</span>
@@ -60,21 +60,21 @@ export function PyqAnalyzer() {
       <div className="grid lg:grid-cols-[1.4fr_1fr] gap-5 mb-8">
         {/* heatmap */}
         <div className="card p-5">
-          <div className="flex items-center justify-between mb-4"><div className="font-semibold">Topic heatmap</div><div className="text-xs text-subtle">darker = asked more often</div></div>
+          <div className="flex items-center justify-between mb-4"><div className="font-medium">Topic heatmap</div><div className="text-xs text-subtle">darker = asked more often</div></div>
           <div className="flex flex-col gap-3">
             {MODULES.map(m => (
               <div key={m.id} className="flex gap-3 items-stretch">
-                <div className="w-10 shrink-0 grid place-items-center rounded-lg bg-surface-2 text-xs font-bold">M{m.id}</div>
+                <div className="w-10 shrink-0 grid place-items-center rounded-lg bg-surface-2 text-xs font-semibold">M{m.id}</div>
                 <div className="flex-1 grid gap-2" style={{ gridTemplateColumns: `repeat(${m.topics.length}, minmax(0, 1fr))` }}>
                   {m.topics.map(t => {
                     const s = stats.find(x => x.topicId === t.id)!
                     const a = s.count / maxCount
                     return (
-                      <button key={t.id} onClick={() => setOpenTopic(openTopic === t.id ? null : t.id)} className="rounded-xl p-2.5 text-left border transition-transform hover:-translate-y-0.5"
+                      <button key={t.id} onClick={() => setOpenTopic(openTopic === t.id ? null : t.id)} className="rounded-xl p-3 text-left border transition-transform hover:-translate-y-0.5"
                         style={{ background: `color-mix(in srgb, var(--accent) ${Math.round(8 + a * 72)}%, var(--elevated))`, borderColor: openTopic === t.id ? 'var(--accent)' : 'var(--line)', color: a > 0.55 ? '#fff' : 'var(--fg)' }}>
-                        <div className="text-[11px] font-semibold leading-tight line-clamp-2">{t.short}</div>
-                        <div className="text-xl font-extrabold mt-1">{s.count}</div>
-                        <div className="text-[10px] opacity-80">{s.marks.toFixed(0)} marks</div>
+                        <div className="text-[11px] font-medium leading-tight line-clamp-2">{t.short}</div>
+                        <div className="text-xl font-semibold mt-1">{s.count}</div>
+                        <div className="text-xs opacity-80">{s.marks.toFixed(0)} marks</div>
                       </button>
                     )
                   })}
@@ -85,13 +85,13 @@ export function PyqAnalyzer() {
         </div>
         {/* ranking */}
         <div className="card p-5">
-          <div className="font-semibold mb-4">Most repeated topics</div>
-          <div className="flex flex-col gap-2.5">
+          <div className="font-medium mb-4">Most repeated topics</div>
+          <div className="flex flex-col gap-3">
             {ranked.slice(0, 8).map((s, i) => {
               const t = topicById(s.topicId)!
               return (
                 <button key={s.topicId} onClick={() => setOpenTopic(s.topicId)} className="text-left">
-                  <div className="flex justify-between text-sm"><span className="truncate"><span className="text-subtle font-mono mr-2">{i + 1}</span>{t.title}</span><span className="font-semibold tabular-nums">{s.count}</span></div>
+                  <div className="flex justify-between text-sm"><span className="truncate"><span className="text-subtle font-mono mr-2">{i + 1}</span>{t.title}</span><span className="font-medium tabular-nums">{s.count}</span></div>
                   <div className="h-2 rounded-full bg-surface-2 mt-1 overflow-hidden"><motion.div className="h-full rounded-full bg-accent" initial={{ width: 0 }} animate={{ width: `${(s.count / maxCount) * 100}%` }} transition={{ delay: i * 0.04 }} /></div>
                 </button>
               )
@@ -105,9 +105,9 @@ export function PyqAnalyzer() {
         const s = stats.find(x => x.topicId === openTopic)!; const t = topicById(openTopic)!
         return (
           <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="card p-5 mb-8">
-            <div className="flex flex-wrap items-center gap-3 mb-3"><div className="font-semibold">{t.title}</div><span className="chip">{s.count} question(s)</span><span className="chip chip-muted">{s.exams.size} exam(s)</span><a className="btn btn-sm ml-auto" href={href(`/topic/${t.id}`)}>Study this topic</a><button className="btn btn-sm btn-ghost" onClick={() => setOpenTopic(null)}>Close</button></div>
+            <div className="flex flex-wrap items-center gap-3 mb-3"><div className="font-medium">{t.title}</div><span className="chip">{s.count} question(s)</span><span className="chip chip-muted">{s.exams.size} exam(s)</span><a className="btn btn-sm ml-auto" href={href(`/topic/${t.id}`)}>Study this topic</a><button className="btn btn-sm btn-ghost" onClick={() => setOpenTopic(null)}>Close</button></div>
             <div className="flex flex-col divide-y divide-[var(--line)]">
-              {s.questions.map(q => <div key={q.id + q.exam} className="py-2.5 flex gap-3 text-sm"><span className="chip chip-muted shrink-0 h-6">{q.exam} · {q.part === '?' ? '' : q.part}{q.number}</span><span className="flex-1">{q.text}</span><span className="text-subtle shrink-0">{q.est ? '≈' : ''}{q.marks}m</span></div>)}
+              {s.questions.map(q => <div key={q.id + q.exam} className="py-3 flex gap-3 text-sm"><span className="chip chip-muted shrink-0 h-6">{q.exam} · {q.part === '?' ? '' : q.part}{q.number}</span><span className="flex-1">{q.text}</span><span className="text-subtle shrink-0">{q.est ? '≈' : ''}{q.marks}m</span></div>)}
               {!s.questions.length && <div className="text-sm text-subtle py-2">Not asked in the loaded papers yet.</div>}
             </div>
           </motion.div>
@@ -115,12 +115,12 @@ export function PyqAnalyzer() {
       })()}
 
       <div className="card p-5 mb-8">
-        <div className="flex items-center gap-2 font-semibold mb-1"><Repeat size={16} className="text-accent" />Questions that keep coming back</div>
+        <div className="flex items-center gap-2 font-medium mb-1"><Repeat size={16} className="text-accent" />Questions that keep coming back</div>
         <p className="text-sm text-muted mb-4">Counted from the loaded papers — master these patterns first.</p>
         <div className="grid md:grid-cols-2 gap-3">
           {patterns.map(p => (
             <a key={p.id} href={href(`/topic/${p.topicId}`)} className="rounded-xl border border-line p-3 hover:border-accent transition-colors">
-              <div className="flex items-start gap-2"><span className="text-sm font-semibold flex-1">{p.label}</span><span className="chip shrink-0">{p.papers} paper{p.papers > 1 ? 's' : ''}</span></div>
+              <div className="flex items-start gap-2"><span className="text-sm font-medium flex-1">{p.label}</span><span className="chip shrink-0">{p.papers} paper{p.papers > 1 ? 's' : ''}</span></div>
               <div className="text-xs text-muted mt-1">{p.tip}</div>
             </a>
           ))}
@@ -130,7 +130,7 @@ export function PyqAnalyzer() {
       <div className="grid lg:grid-cols-2 gap-5">
         {/* mapper probe */}
         <div className="card p-5">
-          <div className="flex items-center gap-2 font-semibold mb-1"><WandSparkles size={16} className="text-accent" />Live topic mapper</div>
+          <div className="flex items-center gap-2 font-medium mb-1"><WandSparkles size={16} className="text-accent" />Live topic mapper</div>
           <p className="text-sm text-muted mb-3">Type or paste any exam question to see which syllabus topics it maps to.</p>
           <textarea className="w-full rounded-xl border border-line bg-surface p-3 text-sm outline-none focus:border-accent" rows={3} value={probe} onChange={e => setProbe(e.target.value)} />
           <div className="flex flex-col gap-2 mt-3">
@@ -146,10 +146,10 @@ export function PyqAnalyzer() {
         </div>
         {/* import */}
         <div className="card p-5">
-          <div className="flex items-center gap-2 font-semibold mb-1"><FileJson size={16} className="text-accent" />Import question papers</div>
+          <div className="flex items-center gap-2 font-medium mb-1"><FileJson size={16} className="text-accent" />Import question papers</div>
           <p className="text-sm text-muted mb-3">JSON: one paper or an array of papers. Optional <code className="font-mono text-xs">topicIds</code> override the automatic mapping.</p>
           <textarea className="w-full rounded-xl border border-line bg-surface p-3 font-mono text-xs outline-none focus:border-accent" rows={5} placeholder='[{"exam":"Dec 2024","year":2024,"questions":[{"part":"A","number":"1","marks":3,"module":1,"text":"…"}]}]' value={paste} onChange={e => setPaste(e.target.value)} />
-          {err && <div className="text-sm mt-2" style={{ color: 'var(--bad)' }}>⚠ {err}</div>}
+          {err && <div className="text-sm mt-2" style={{ color: 'var(--bad)' }}>{err}</div>}
           <div className="flex flex-wrap gap-2 mt-3">
             <button className="btn btn-primary btn-sm" onClick={() => ingest(paste)} disabled={!paste.trim()}><Plus size={14} />Import JSON</button>
             <button className="btn btn-sm" onClick={() => file.current?.click()}><Upload size={14} />Upload .json</button>
@@ -168,7 +168,7 @@ export function PyqAnalyzer() {
 
       {unmapped.length > 0 && (
         <details className="card p-5 mt-5">
-          <summary className="font-semibold cursor-pointer flex items-center gap-2"><ChevronDown size={15} />{unmapped.length} question(s) could not be mapped</summary>
+          <summary className="font-medium cursor-pointer flex items-center gap-2"><ChevronDown size={15} />{unmapped.length} question(s) could not be mapped</summary>
           <ul className="mt-3 text-sm text-muted list-disc pl-5">{unmapped.map(q => <li key={q.id}>{q.text} — add <code className="font-mono text-xs">module</code> or <code className="font-mono text-xs">topicIds</code></li>)}</ul>
         </details>
       )}

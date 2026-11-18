@@ -44,21 +44,21 @@ export function CpuVis() {
         <div className="rounded-2xl border border-line bg-surface p-4">
           <div className="flex justify-between mb-3">
             {PHASES.map(p => (
-              <motion.div key={p} animate={{ scale: f.phase === p ? 1.06 : 1 }} className={`flex-1 mx-1 text-center rounded-xl py-2 text-xs font-bold ${f.phase === p ? 'bg-accent text-accent-fg' : 'bg-elevated text-subtle border border-line'}`} style={f.phase === p ? { boxShadow: 'var(--glow)' } : undefined}>{p}</motion.div>
+              <motion.div key={p} animate={{ scale: f.phase === p ? 1.06 : 1 }} className={`flex-1 mx-1 text-center rounded-xl py-2 text-xs font-semibold ${f.phase === p ? 'bg-accent text-accent-fg' : 'bg-elevated text-subtle border border-line'}`} style={f.phase === p ? { boxShadow: 'var(--glow)' } : undefined}>{p}</motion.div>
             ))}
           </div>
           <div className="grid grid-cols-3 gap-3">
             {([['PC', f.pc, 'Program Counter'], ['IR', f.ir || '—', 'Instruction Register'], ['ACC', f.acc, 'Accumulator']] as const).map(([k, v, d]) => (
               <div key={k} className="card p-3 text-center">
-                <div className="text-[11px] font-bold text-subtle">{k}</div>
-                <motion.div key={String(v)} initial={{ scale: 1.3, color: 'var(--accent)' }} animate={{ scale: 1, color: 'var(--fg)' }} className="font-mono text-xl font-bold my-1">{v}</motion.div>
-                <div className="text-[10px] text-subtle">{d}</div>
+                <div className="text-[11px] font-semibold text-subtle">{k}</div>
+                <motion.div key={String(v)} initial={{ scale: 1.3, color: 'var(--accent)' }} animate={{ scale: 1, color: 'var(--fg)' }} className="font-mono text-xl font-semibold my-1">{v}</motion.div>
+                <div className="text-xs text-subtle">{d}</div>
               </div>
             ))}
           </div>
           <div className="grid grid-cols-2 gap-3 mt-3">
-            <div className="card p-3 text-center"><div className="text-[11px] font-bold text-subtle">ALU</div><div className={`text-sm mt-1 ${f.phase === 'EXECUTE' ? 'text-accent font-semibold' : 'text-muted'}`}>{f.phase === 'EXECUTE' ? 'working…' : 'idle'}</div></div>
-            <div className="card p-3 text-center"><div className="text-[11px] font-bold text-subtle">Output device</div><div className="font-mono text-lg font-bold" style={{ color: 'var(--good)' }}>{f.out ?? '—'}</div></div>
+            <div className="card p-3 text-center"><div className="text-[11px] font-semibold text-subtle">ALU</div><div className={`text-sm mt-1 ${f.phase === 'EXECUTE' ? 'text-accent font-medium' : 'text-muted'}`}>{f.phase === 'EXECUTE' ? 'working…' : 'idle'}</div></div>
+            <div className="card p-3 text-center"><div className="text-[11px] font-semibold text-subtle">Output device</div><div className="font-mono text-lg font-semibold" style={{ color: 'var(--good)' }}>{f.out ?? '—'}</div></div>
           </div>
         </div>
         <div className="rounded-2xl border border-line overflow-hidden">

@@ -5,7 +5,7 @@ export function VisShell({ title, desc, children, aside }: { title: string; desc
     <section className="card p-5 lg:p-6">
       <div className="flex flex-wrap items-start gap-3 mb-4">
         <div className="min-w-[240px] flex-1">
-          <h3 className="font-bold text-lg tracking-tight">{title}</h3>
+          <h3 className="font-medium text-lg">{title}</h3>
           {desc && <p className="text-sm text-muted mt-1 max-w-3xl">{desc}</p>}
         </div>
         {aside}
@@ -22,8 +22,8 @@ export function Field({ label, children }: { label: string; children: ReactNode 
 export function Stat({ label, value, tone = 'accent' }: { label: string; value: ReactNode; tone?: 'accent' | 'good' | 'warn' | 'bad' }) {
   return (
     <div className="card-soft px-3 py-2 min-w-[96px]">
-      <div className="text-[11px] text-subtle font-semibold uppercase tracking-wider">{label}</div>
-      <div className="text-lg font-bold tabular-nums" style={{ color: `var(--${tone})` }}>{value}</div>
+      <div className="text-[11px] text-subtle font-medium">{label}</div>
+      <div className="text-lg font-semibold tabular-nums" style={{ color: `var(--${tone})` }}>{value}</div>
     </div>
   )
 }

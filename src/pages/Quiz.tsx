@@ -29,7 +29,7 @@ export function Quiz({ initialTopic, initialModule }: { initialTopic: string | n
   return (
     <div className="mx-auto max-w-[900px] px-4 lg:px-6 py-10">
       <div className="label">Gamified practice</div>
-      <h1 className="text-3xl font-extrabold tracking-tight">Quiz arena</h1>
+      <h1 className="text-3xl font-medium">Quiz arena</h1>
       <p className="text-muted mt-2">Multiple-choice and predict-the-output questions. Build a streak — every correct answer in a row multiplies your points.</p>
       <div className="card p-6 mt-8">
         <div className="label mb-3">1 · Choose scope</div>
@@ -90,14 +90,14 @@ function Game({ questions, scope, onExit, onRetry }: { questions: QuizQuestion[]
 
   if (done) {
     const pct = Math.round((correct / questions.length) * 100)
-    const msg = pct === 100 ? 'Flawless! 🏆' : pct >= 80 ? 'Excellent work!' : pct >= 50 ? 'Good effort — review the misses below.' : 'Keep going — revisit the notes and try again.'
+    const msg = pct === 100 ? 'Perfect score' : pct >= 80 ? 'Excellent work' : pct >= 50 ? 'Good effort — review the misses below.' : 'Keep going — revisit the notes and try again.'
     return (
       <div className="mx-auto max-w-[820px] px-4 lg:px-6 py-10">
         <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="card p-8 text-center relative overflow-hidden">
           {pct >= 80 && <Confetti />}
           <Trophy size={40} className="mx-auto text-warn" />
-          <div className="text-5xl font-extrabold tracking-tight mt-3">{pct}%</div>
-          <div className="text-lg font-semibold mt-1">{msg}</div>
+          <div className="text-5xl font-semibold tracking-tight mt-3">{pct}%</div>
+          <div className="text-lg font-medium mt-1">{msg}</div>
           <div className="flex justify-center flex-wrap gap-3 mt-6">
             <span className="chip !text-sm !py-1.5 !px-3"><Target size={14} />{correct}/{questions.length} correct</span>
             <span className="chip !text-sm !py-1.5 !px-3"><Flame size={14} />best streak {bestStreak}</span>
@@ -112,7 +112,7 @@ function Game({ questions, scope, onExit, onRetry }: { questions: QuizQuestion[]
             <div className="flex flex-col gap-3">
               {wrong.map(({ q, picked }) => (
                 <div key={q.id} className="card p-5">
-                  <div className="font-semibold">{q.question}</div>
+                  <div className="font-medium">{q.question}</div>
                   {q.code && <pre className="code-block p-3 my-2 text-[13px]">{highlight(q.code, q.code.includes('REPEAT') ? 'pseudo' : 'python')}</pre>}
                   <div className="text-sm mt-2"><span style={{ color: 'var(--bad)' }}>Your answer: {q.options[picked]}</span> · <span style={{ color: 'var(--good)' }}>Correct: {q.options[q.answer]}</span></div>
                   <div className="text-sm text-muted mt-1">{q.explain}</div>
@@ -134,15 +134,15 @@ function Game({ questions, scope, onExit, onRetry }: { questions: QuizQuestion[]
         <span className="text-sm font-mono text-subtle">{i + 1}/{questions.length}</span>
       </div>
       <div className="flex gap-3 mb-5">
-        <motion.div key={streak} initial={{ scale: streak ? 1.25 : 1 }} animate={{ scale: 1 }} className="card-soft px-3 py-2 flex items-center gap-2"><Flame size={18} style={{ color: streak >= 3 ? 'var(--warn)' : 'var(--subtle)' }} fill={streak >= 3 ? 'currentColor' : 'none'} /><span className="font-bold">{streak}</span><span className="text-xs text-subtle">streak</span></motion.div>
-        <div className="card-soft px-3 py-2 flex items-center gap-2"><Zap size={16} className="text-accent" /><span className="font-bold tabular-nums">{score}</span><span className="text-xs text-subtle">pts {streak > 1 && <b className="text-accent">×{Math.min(streak + 1, 5)} next</b>}</span></div>
+        <motion.div key={streak} initial={{ scale: streak ? 1.25 : 1 }} animate={{ scale: 1 }} className="card-soft px-3 py-2 flex items-center gap-2"><Flame size={18} style={{ color: streak >= 3 ? 'var(--warn)' : 'var(--subtle)' }} fill={streak >= 3 ? 'currentColor' : 'none'} /><span className="font-semibold">{streak}</span><span className="text-xs text-subtle">streak</span></motion.div>
+        <div className="card-soft px-3 py-2 flex items-center gap-2"><Zap size={16} className="text-accent" /><span className="font-semibold tabular-nums">{score}</span><span className="text-xs text-subtle">pts {streak > 1 && <b className="text-accent">×{Math.min(streak + 1, 5)} next</b>}</span></div>
       </div>
       <AnimatePresence mode="wait">
         <motion.div key={q.id} initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} transition={{ duration: 0.22 }} className="card p-6 lg:p-8">
           <div className="flex items-center gap-2 mb-3"><span className="chip">{q.kind === 'output' ? 'Predict the output' : 'Multiple choice'}</span><span className="chip chip-muted">{topicById(q.topicId)?.short}</span></div>
-          <h2 className="text-xl font-bold leading-snug">{q.question}</h2>
+          <h2 className="text-xl font-medium leading-snug">{q.question}</h2>
           {q.code && <pre className="code-block p-4 mt-4 text-[13.5px]">{highlight(q.code, q.code.includes('REPEAT') ? 'pseudo' : 'python')}</pre>}
-          <div className="grid gap-2.5 mt-5">
+          <div className="grid gap-3 mt-5">
             {q.options.map((o, k) => {
               const state = picked === null ? 'idle' : k === q.answer ? 'right' : k === picked ? 'wrong' : 'dim'
               return (
@@ -150,7 +150,7 @@ function Game({ questions, scope, onExit, onRetry }: { questions: QuizQuestion[]
                   animate={state === 'wrong' ? { x: [0, -8, 8, -5, 5, 0] } : {}} transition={{ duration: 0.35 }}
                   className={`text-left flex items-center gap-3 px-4 py-3 rounded-xl border font-medium ${q.kind === 'output' ? 'font-mono text-sm' : ''}`}
                   style={{ borderColor: state === 'right' ? 'var(--good)' : state === 'wrong' ? 'var(--bad)' : 'var(--line)', background: state === 'right' ? 'var(--good-soft)' : state === 'wrong' ? 'var(--bad-soft)' : 'var(--elevated)', opacity: state === 'dim' ? 0.55 : 1, cursor: picked === null ? 'pointer' : 'default' }}>
-                  <span className="grid place-items-center w-7 h-7 rounded-lg text-xs font-bold shrink-0 font-sans" style={{ background: state === 'right' ? 'var(--good)' : state === 'wrong' ? 'var(--bad)' : 'var(--surface-2)', color: state === 'right' || state === 'wrong' ? '#fff' : 'var(--muted)' }}>{state === 'right' ? <Check size={14} /> : state === 'wrong' ? <X size={14} /> : k + 1}</span>
+                  <span className="grid place-items-center w-7 h-7 rounded-lg text-xs font-semibold shrink-0 font-sans" style={{ background: state === 'right' ? 'var(--good)' : state === 'wrong' ? 'var(--bad)' : 'var(--surface-2)', color: state === 'right' || state === 'wrong' ? '#fff' : 'var(--muted)' }}>{state === 'right' ? <Check size={14} /> : state === 'wrong' ? <X size={14} /> : k + 1}</span>
                   <span className="whitespace-pre-wrap">{o}</span>
                 </motion.button>
               )
@@ -160,7 +160,7 @@ function Game({ questions, scope, onExit, onRetry }: { questions: QuizQuestion[]
             {picked !== null && (
               <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="overflow-hidden">
                 <div className="mt-5 rounded-xl p-4 border" style={{ background: isRight ? 'var(--good-soft)' : 'var(--bad-soft)', borderColor: isRight ? 'var(--good)' : 'var(--bad)' }}>
-                  <div className="font-bold" style={{ color: isRight ? 'var(--good)' : 'var(--bad)' }}>{isRight ? (streak >= 3 ? `🔥 ${streak} in a row!` : 'Correct!') : 'Not quite.'}</div>
+                  <div className="font-semibold" style={{ color: isRight ? 'var(--good)' : 'var(--bad)' }}>{isRight ? (streak >= 3 ? `${streak} correct in a row` : 'Correct') : 'Not quite'}</div>
                   <div className="text-sm mt-1">{q.explain}</div>
                 </div>
                 <div className="flex justify-end mt-4"><button className="btn btn-primary" onClick={next}>{i + 1 >= questions.length ? 'See results' : 'Next question'}<ArrowRight size={15} /></button></div>

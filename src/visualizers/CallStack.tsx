@@ -84,7 +84,7 @@ export function CallStackVis() {
         <div>
           <pre className="code-block p-4 m-0 mb-3"><code>{highlight(fn.code)}</code></pre>
           <div className="code-block p-3 h-[200px] overflow-auto text-[12px]">
-            <div className="text-[10px] uppercase tracking-widest text-code-muted font-sans font-bold mb-1">Trace</div>
+            <div className="text-xs text-code-muted font-sans font-semibold mb-1">Trace</div>
             {f.log.map((l, i) => <div key={i} className={`whitespace-pre ${l.includes('←') ? 'text-code-ok' : 'text-code-acc'}`}>{l}</div>)}
           </div>
         </div>
@@ -96,8 +96,8 @@ export function CallStackVis() {
                 const top = i === f.stack.length - 1
                 return (
                   <motion.div key={fr.id} layout initial={{ opacity: 0, y: -30, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, x: 60, transition: { duration: 0.25 } }}
-                    className={`rounded-xl border px-4 py-2.5 flex items-center gap-3 ${top ? 'bg-accent text-accent-fg border-accent' : 'bg-elevated border-line'}`} style={top ? { boxShadow: 'var(--glow)' } : undefined}>
-                    <span className="font-mono font-bold text-sm">{fr.label}</span>
+                    className={`rounded-xl border px-4 py-3 flex items-center gap-3 ${top ? 'bg-accent text-accent-fg border-accent' : 'bg-elevated border-line'}`} style={top ? { boxShadow: 'var(--glow)' } : undefined}>
+                    <span className="font-mono font-semibold text-sm">{fr.label}</span>
                     {fr.waiting && <span className={`text-xs font-mono ${top ? 'opacity-80' : 'text-subtle'}`}>waiting: {fr.waiting}</span>}
                     {fr.ret !== undefined && <span className="ml-auto chip" style={{ background: 'var(--good)', color: '#fff' }}>return {fr.ret}</span>}
                   </motion.div>

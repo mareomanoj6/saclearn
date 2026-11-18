@@ -47,7 +47,7 @@ export function Flashcards({ initialTopic, initialModule }: { initialTopic: stri
   return (
     <div className="mx-auto max-w-[920px] px-4 lg:px-6 py-8">
       <div className="label">Active recall</div>
-      <h1 className="text-2xl font-bold tracking-tight mb-5">Flashcards</h1>
+      <h1 className="text-2xl font-medium mb-5">Flashcards</h1>
       <div className="flex flex-wrap gap-2 mb-3">
         {[0, 1, 2, 3, 4].map(m => <button key={m} className={`tab ${mod === m ? 'tab-active' : ''}`} onClick={() => { setMod(m); setTopic('') }}>{m === 0 ? 'All modules' : `Module ${m}`}</button>)}
       </div>
@@ -64,7 +64,7 @@ export function Flashcards({ initialTopic, initialModule }: { initialTopic: stri
       <div className="h-1.5 rounded-full bg-surface-2 overflow-hidden mb-6"><motion.div className="h-full bg-good rounded-full" animate={{ width: `${(doneCount / Math.max(1, total.length)) * 100}%` }} /></div>
 
       {!card ? (
-        <div className="card p-12 text-center"><div className="text-4xl mb-2">🎉</div><div className="font-semibold">Everything here is mastered!</div><button className="btn mt-4" onClick={() => setHideMastered(false)}>Show all cards</button></div>
+        <div className="card p-12 text-center"><Check size={28} className="mx-auto mb-3 text-good" /><div className="font-medium">Everything here is mastered</div><button className="btn mt-4" onClick={() => setHideMastered(false)}>Show all cards</button></div>
       ) : (
         <>
           <div className="flip-scene h-[340px] sm:h-[320px]">
@@ -72,12 +72,12 @@ export function Flashcards({ initialTopic, initialModule }: { initialTopic: stri
               <motion.div key={card.id} custom={dir} initial={{ opacity: 0, x: dir * 80, rotate: dir * 3 }} animate={{ opacity: 1, x: 0, rotate: 0 }} exit={{ opacity: 0, x: dir * -80, rotate: dir * -3 }} transition={{ duration: 0.25 }} className="w-full h-full">
                 <div className={`flip-card relative w-full h-full cursor-pointer ${flipped ? 'flipped' : ''}`} onClick={() => setFlipped(f => !f)}>
                   <div className="flip-face card p-8 flex flex-col">
-                    <div className="flex items-center gap-2 text-xs text-subtle font-semibold"><span className="chip">{topicById(card.topicId)?.short}</span>Question {Math.min(i, deck.length - 1) + 1} of {deck.length}{isM && <span className="chip ml-auto" style={{ color: 'var(--good)', background: 'var(--good-soft)' }}><Check size={12} />mastered</span>}</div>
-                    <div className="flex-1 grid place-items-center text-center"><div className="text-xl sm:text-2xl font-bold leading-snug max-w-xl">{card.front}</div></div>
+                    <div className="flex items-center gap-2 text-xs text-subtle font-medium"><span className="chip">{topicById(card.topicId)?.short}</span>Question {Math.min(i, deck.length - 1) + 1} of {deck.length}{isM && <span className="chip ml-auto" style={{ color: 'var(--good)', background: 'var(--good-soft)' }}><Check size={12} />mastered</span>}</div>
+                    <div className="flex-1 grid place-items-center text-center"><div className="text-xl sm:text-2xl font-semibold leading-snug max-w-xl">{card.front}</div></div>
                     <div className="text-center text-xs text-subtle">Click or press <span className="kbd">Space</span> to flip</div>
                   </div>
-                  <div className="flip-face flip-back rounded-2xl p-8 flex flex-col text-white" style={{ background: 'linear-gradient(135deg, var(--accent-strong), var(--accent))', boxShadow: 'var(--glow)' }}>
-                    <div className="text-xs font-bold opacity-80">ANSWER</div>
+                  <div className="flip-face flip-back rounded-2xl p-8 flex flex-col" style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}>
+                    <div className="text-xs font-medium opacity-80">Answer</div>
                     <div className="flex-1 grid place-items-center text-center"><div className="text-lg sm:text-xl font-medium leading-relaxed max-w-xl">{card.back}</div></div>
                   </div>
                 </div>

@@ -34,7 +34,7 @@ export function TopThreeVis() {
       <input className="input font-mono w-full mb-4" value={raw} onChange={e => setRaw(e.target.value)} aria-label="Numbers" />
       <div className="flex flex-wrap gap-2 mb-6">
         {nums.map((n, i) => (
-          <motion.div key={i} animate={{ y: i === f.i ? -8 : 0, scale: i === f.i ? 1.1 : 1 }} className={`w-12 h-12 rounded-xl grid place-items-center font-mono font-bold border ${i === f.i ? 'bg-accent text-accent-fg border-accent' : i < f.i ? 'bg-surface-2 text-subtle border-line' : 'bg-elevated border-line'}`}>{n}</motion.div>
+          <motion.div key={i} animate={{ y: i === f.i ? -8 : 0, scale: i === f.i ? 1.1 : 1 }} className={`w-12 h-12 rounded-xl grid place-items-center font-mono font-semibold border ${i === f.i ? 'bg-accent text-accent-fg border-accent' : i < f.i ? 'bg-surface-2 text-subtle border-line' : 'bg-elevated border-line'}`}>{n}</motion.div>
         ))}
       </div>
       <div className="flex items-end justify-center gap-3 h-[200px] rounded-2xl bg-surface border border-line grid-bg px-4">
@@ -42,8 +42,8 @@ export function TopThreeVis() {
           const v = f.top[p.k]
           return (
             <div key={p.k} className="flex flex-col items-center w-28">
-              <motion.div key={String(v)} initial={{ scale: 0.4, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className={`mb-2 w-14 h-14 rounded-full grid place-items-center font-mono font-bold text-lg border-2 ${f.changed === p.k ? 'border-accent text-accent' : 'border-line'}`} style={{ background: 'var(--elevated)', boxShadow: f.changed === p.k ? 'var(--glow)' : undefined }}>{v ?? '−∞'}</motion.div>
-              <div className="w-full rounded-t-xl grid place-items-start justify-center pt-2 text-xs font-bold text-white" style={{ height: p.h - 60, background: p.k === 0 ? 'var(--accent)' : 'var(--accent-strong)', opacity: p.k === 0 ? 1 : 0.75 }}>{p.label}</div>
+              <motion.div key={String(v)} initial={{ scale: 0.4, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className={`mb-2 w-14 h-14 rounded-full grid place-items-center font-mono font-semibold text-lg border-2 ${f.changed === p.k ? 'border-accent text-accent' : 'border-line'}`} style={{ background: 'var(--elevated)', boxShadow: f.changed === p.k ? 'var(--glow)' : undefined }}>{v ?? '−∞'}</motion.div>
+              <div className="w-full rounded-t-xl grid place-items-start justify-center pt-2 text-xs font-semibold text-white" style={{ height: p.h - 60, background: p.k === 0 ? 'var(--accent)' : 'var(--accent-strong)', opacity: p.k === 0 ? 1 : 0.75 }}>{p.label}</div>
             </div>
           )
         })}

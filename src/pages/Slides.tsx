@@ -26,8 +26,8 @@ function buildSlides(m: Module): Slide[] {
         <div className="grid sm:grid-cols-2 gap-3">
           {m.topics.map((t, i) => (
             <motion.div key={t.id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 + i * 0.07 }} className="card p-4 flex items-center gap-3">
-              <span className="grid place-items-center w-10 h-10 rounded-xl text-white" style={{ background: `linear-gradient(135deg, ${acc.from}, ${acc.to})` }}><TopicIcon name={t.icon} size={18} /></span>
-              <span className="font-semibold text-lg">{t.title}</span>
+              <span className="grid place-items-center w-10 h-10 rounded-xl bg-accent-soft text-accent"><TopicIcon name={t.icon} size={18} /></span>
+              <span className="font-medium text-lg">{t.title}</span>
             </motion.div>
           ))}
         </div>
@@ -49,7 +49,7 @@ function buildSlides(m: Module): Slide[] {
             <ul className="flex flex-col gap-3">
               {t.takeaways.map((k, i) => (
                 <motion.li key={i} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.08 }} className="flex gap-3 text-[17px] leading-snug">
-                  <span className="grid place-items-center w-6 h-6 rounded-full bg-accent text-accent-fg text-xs font-bold shrink-0 mt-0.5">{i + 1}</span><span>{fmt(k)}</span>
+                  <span className="grid place-items-center w-6 h-6 rounded-full bg-accent text-accent-fg text-xs font-semibold shrink-0 mt-0.5">{i + 1}</span><span>{fmt(k)}</span>
                 </motion.li>
               ))}
             </ul>
@@ -118,7 +118,7 @@ export function Slides({ moduleId }: { moduleId: number }) {
             className="absolute inset-0 overflow-auto scrollbar-thin">
             <div className="mx-auto max-w-[1180px] px-8 lg:px-16 py-12 lg:py-16 min-h-full flex flex-col justify-center">
               <div className="label mb-3 text-accent">{s.kicker}</div>
-              <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-8 leading-tight">{s.title}</h1>
+              <h1 className="text-4xl lg:text-5xl font-medium tracking-tight mb-8 leading-tight">{s.title}</h1>
               {s.body}
             </div>
           </motion.div>

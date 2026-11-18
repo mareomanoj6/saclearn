@@ -95,7 +95,7 @@ export function FibDPVis() {
           {f.memo.map((v, i) => (
             <div key={i} className="flex flex-col items-center">
               <span className="text-[11px] font-mono text-subtle">[{i}]</span>
-              <motion.div key={String(v)} initial={v !== null ? { scale: 1.3 } : false} animate={{ scale: 1 }} className={`w-12 h-11 rounded-lg grid place-items-center font-mono font-bold border ${v === null ? 'border-dashed border-line text-subtle' : (mode === 'tab' && f.active === i) ? 'bg-accent text-accent-fg border-accent' : 'bg-good-soft border-good text-good'}`}>{mode === 'naive' ? '–' : v ?? '?'}</motion.div>
+              <motion.div key={String(v)} initial={v !== null ? { scale: 1.3 } : false} animate={{ scale: 1 }} className={`w-12 h-11 rounded-lg grid place-items-center font-mono font-semibold border ${v === null ? 'border-dashed border-line text-subtle' : (mode === 'tab' && f.active === i) ? 'bg-accent text-accent-fg border-accent' : 'bg-good-soft border-good text-good'}`}>{mode === 'naive' ? '–' : v ?? '?'}</motion.div>
             </div>
           ))}
         </div>

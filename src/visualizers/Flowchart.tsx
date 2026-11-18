@@ -158,12 +158,12 @@ export function FlowchartVis() {
           <div className="card overflow-hidden">
             <div className="px-4 py-2 bg-surface border-b border-line label">Variables</div>
             <table className="tbl"><tbody>
-              {Object.entries(st.vars).map(([k, v]) => <tr key={k}><td className="font-mono">{k}</td><td><motion.span key={String(v)} initial={{ color: 'var(--accent)' }} animate={{ color: 'var(--muted)' }} className="font-mono font-bold">{v}</motion.span></td></tr>)}
+              {Object.entries(st.vars).map(([k, v]) => <tr key={k}><td className="font-mono">{k}</td><td><motion.span key={String(v)} initial={{ color: 'var(--accent)' }} animate={{ color: 'var(--muted)' }} className="font-mono font-semibold">{v}</motion.span></td></tr>)}
               {Object.keys(st.vars).length === 0 && <tr><td className="text-subtle">— none yet —</td></tr>}
             </tbody></table>
           </div>
           <div className="code-block p-3 min-h-[70px]">
-            <div className="text-[10px] uppercase tracking-widest text-code-muted font-sans font-bold mb-1">Output</div>
+            <div className="text-xs text-code-muted font-sans font-semibold mb-1">Output</div>
             <div className="text-code-ok">{st.out.join(' ') || ' '}</div>
           </div>
           <div className="card-soft p-3 text-xs text-muted space-y-1">

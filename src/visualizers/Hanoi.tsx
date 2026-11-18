@@ -48,13 +48,13 @@ export function HanoiVis() {
               const moving = f.move && f.move[0] === d
               return (
                 <motion.div key={d} layout layoutId={`disk-${d}`} transition={{ type: 'spring', stiffness: 260, damping: 26 }}
-                  className="relative z-10 h-6 rounded-md mb-[2px] grid place-items-center text-[11px] font-bold text-white"
+                  className="relative z-10 h-6 rounded-md mb-[2px] grid place-items-center text-[11px] font-semibold text-white"
                   style={{ width: `${Math.min(W, 40 + d * 30)}px`, maxWidth: '100%', background: `hsl(${205 + d * 9} 85% ${62 - d * 4}%)`, boxShadow: moving ? '0 0 0 3px var(--accent-soft), 0 0 18px var(--accent)' : 'none' }}>
                   {d}
                 </motion.div>
               )
             })}
-            <div className="absolute -bottom-8 text-xs font-semibold text-muted">{NAMES[pi]}</div>
+            <div className="absolute -bottom-8 text-xs font-medium text-muted">{NAMES[pi]}</div>
           </div>
         ))}
       </div>

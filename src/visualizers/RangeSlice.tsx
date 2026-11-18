@@ -14,7 +14,7 @@ function pyRange(a: number, b: number, c: number) {
 function Slider({ label, value, set, min, max }: { label: string; value: number; set: (n: number) => void; min: number; max: number }) {
   return (
     <label className="flex-1 min-w-[150px]">
-      <div className="flex justify-between text-xs mb-1"><span className="font-semibold text-muted">{label}</span><span className="font-mono font-bold text-accent">{value}</span></div>
+      <div className="flex justify-between text-xs mb-1"><span className="font-medium text-muted">{label}</span><span className="font-mono font-semibold text-accent">{value}</span></div>
       <input type="range" min={min} max={max} value={value} onChange={e => set(Number(e.target.value))} className="w-full accent-[var(--accent)]" />
     </label>
   )
@@ -54,14 +54,14 @@ export function RangeVis() {
                 const cur = i === k - 1; const past = i < k - 1
                 return (
                   <motion.div layout key={`${n}-${i}`} initial={{ opacity: 0, scale: 0.6 }} animate={{ opacity: 1, scale: cur ? 1.15 : 1 }} exit={{ opacity: 0, scale: 0.6 }}
-                    className={`w-12 h-12 rounded-xl grid place-items-center font-mono font-bold border ${cur ? 'bg-accent text-accent-fg border-accent' : past ? 'bg-accent-soft text-accent border-transparent' : 'bg-elevated border-line'}`}
-                    style={cur ? { boxShadow: 'var(--glow)' } : undefined}>{n}</motion.div>
+                    className={`w-12 h-12 rounded-xl grid place-items-center font-mono font-semibold border ${cur ? 'bg-accent text-accent-fg border-accent' : past ? 'bg-accent-soft text-accent border-transparent' : 'bg-elevated border-line'}`}
+                    style={cur ? { boxShadow: '0 0 0 2px var(--accent)' } : undefined}>{n}</motion.div>
                 )
               })}
             </AnimatePresence>
             {nums.length === 0 && <div className="text-sm text-subtle">[ ] — empty range</div>}
           </div>
-          {body === 'sum' && <div className="mt-4 text-sm">total = <span className="font-mono font-bold text-accent text-lg">{acc}</span></div>}
+          {body === 'sum' && <div className="mt-4 text-sm">total = <span className="font-mono font-semibold text-accent text-lg">{acc}</span></div>}
           {body !== 'sum' && <div className="mt-4 font-mono text-sm text-muted">output: {done.map(n => (body === 'square' ? n * n : n)).join(' ')}</div>}
         </div>
         <pre className="code-block p-4 m-0 text-[13px]">{code}</pre>
@@ -110,9 +110,9 @@ export function SlicingVis() {
             return (
               <div key={i} className="flex flex-col items-center gap-1">
                 <span className="text-[11px] font-mono text-subtle">{i}</span>
-                <motion.div animate={{ y: on ? -6 : 0, scale: on ? 1.04 : 1 }} className={`relative px-3 h-12 min-w-[64px] rounded-xl grid place-items-center font-semibold text-sm border ${on ? 'bg-accent text-accent-fg border-accent' : 'bg-elevated border-line text-muted'}`} style={on ? { boxShadow: 'var(--glow)' } : undefined}>
+                <motion.div animate={{ y: on ? -6 : 0, scale: on ? 1.04 : 1 }} className={`relative px-3 h-12 min-w-[64px] rounded-xl grid place-items-center font-medium text-sm border ${on ? 'bg-accent text-accent-fg border-accent' : 'bg-elevated border-line text-muted'}`} style={on ? { boxShadow: 'var(--glow)' } : undefined}>
                   {x}
-                  {on && <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-warn text-white text-[10px] grid place-items-center">{order + 1}</span>}
+                  {on && <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-warn text-white text-xs grid place-items-center">{order + 1}</span>}
                 </motion.div>
                 <span className="text-[11px] font-mono text-subtle">{i - list.length}</span>
               </div>

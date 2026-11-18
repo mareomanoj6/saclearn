@@ -308,8 +308,8 @@ print("Top three:", first, second, third)
         title: 'Avoiding Circularity in Recursion',
         blocks: [
           { type: 'compare', items: [
-            { title: '❌ Circular', tone: 'red', points: ['def bad(n):', '    print(n)', '    bad(n)   # no base case, no progress'] },
-            { title: '✅ Safe', tone: 'green', points: ['def good(n):', '    if n == 0: print("Done!")', '    else: print(n); good(n - 1)'] },
+            { title: 'Circular (unsafe)', tone: 'red', points: ['def bad(n):', '    print(n)', '    bad(n)   # no base case, no progress'] },
+            { title: 'Safe', tone: 'green', points: ['def good(n):', '    if n == 0: print("Done!")', '    else: print(n); good(n - 1)'] },
           ] },
           { type: 'list', ordered: true, items: ['**Always define a base case.**', '**Make progress toward it** on every call (n − 1, list[1:], b → a % b).', '**Test edge cases** (0, 1, empty list, negative input).'] },
         ],

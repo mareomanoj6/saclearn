@@ -53,7 +53,7 @@ export function MindMap() {
   return (
     <div className="mx-auto max-w-[1440px] px-4 lg:px-6 py-8">
       <div className="flex flex-wrap items-end gap-3 mb-5">
-        <div><div className="label">Interactive mind map</div><h1 className="text-2xl font-bold tracking-tight">The whole course on one canvas</h1>
+        <div><div className="label">Interactive mind map</div><h1 className="text-2xl font-medium">The whole course on one canvas</h1>
           <p className="text-sm text-muted mt-1">Click a module or topic to expand/collapse. Use the ↗ icon on a topic to open its workspace.</p></div>
         <div className="ml-auto flex gap-2">
           <button className="btn btn-sm" onClick={all}><Expand size={14} />Expand all</button>
@@ -94,7 +94,7 @@ export function MindMap() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
         {MODULES.map(m => (
           <div key={m.id} className="card-soft p-4">
-            <div className="flex items-center gap-2 mb-2"><span className="w-3 h-3 rounded-full" style={{ background: MODULE_ACCENT[m.id].from }} /><span className="font-semibold text-sm">Module {m.id}</span></div>
+            <div className="flex items-center gap-2 mb-2"><span className="w-3 h-3 rounded-full" style={{ background: MODULE_ACCENT[m.id].from }} /><span className="font-medium text-sm">Module {m.id}</span></div>
             <div className="text-xs text-muted">{m.topics.length} topics · {m.topics.reduce((a, t) => a + t.subtopics.length, 0)} subtopics</div>
           </div>
         ))}

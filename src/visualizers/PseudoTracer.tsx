@@ -155,7 +155,7 @@ export function PseudoTracerVis() {
       <div className="grid lg:grid-cols-[1.3fr_1fr] gap-4">
         <div className="code-block py-3">
           {prog.lines.map((l, i) => (
-            <div key={i} className="relative flex px-4 py-[3px]">
+            <div key={i} className="relative flex px-4 py-1">
               {f.line === i && <motion.div layoutId="pseudo-line" className="absolute inset-0 bg-[#38bdf8]/15 border-l-[3px] border-[#38bdf8]" transition={{ type: 'spring', stiffness: 400, damping: 34 }} />}
               <span className="relative w-7 text-[#475569] select-none">{i + 1}</span>
               <span className="relative whitespace-pre">{highlight(l, 'pseudo')}</span>
@@ -170,13 +170,13 @@ export function PseudoTracerVis() {
               {Object.entries(f.vars).map(([k, v]) => (
                 <div key={k} className="rounded-lg border border-line px-3 py-1.5">
                   <div className="text-[11px] text-subtle font-mono">{k}</div>
-                  <motion.div key={String(v)} initial={{ color: 'var(--accent)', scale: 1.15 }} animate={{ color: 'var(--fg)', scale: 1 }} className="font-mono font-bold">{v}</motion.div>
+                  <motion.div key={String(v)} initial={{ color: 'var(--accent)', scale: 1.15 }} animate={{ color: 'var(--fg)', scale: 1 }} className="font-mono font-semibold">{v}</motion.div>
                 </div>
               ))}
             </div>
           </div>
           <div className="code-block p-3 min-h-[90px] max-h-[160px] overflow-auto">
-            <div className="text-[10px] uppercase tracking-widest text-code-muted font-sans font-bold mb-1">Output</div>
+            <div className="text-xs text-code-muted font-sans font-semibold mb-1">Output</div>
             <div className="text-code-ok break-words">{f.out.join(' ') || ' '}</div>
           </div>
         </div>

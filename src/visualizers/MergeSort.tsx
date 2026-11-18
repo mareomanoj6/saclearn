@@ -53,7 +53,7 @@ export function MergeSortVis() {
               <motion.div key={sg.id} initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} className="absolute px-1" style={{ top: sg.depth * 64, left: `${left}%`, width: `${width}%` }}>
                 <div className={`flex gap-1 p-1 rounded-xl border ${active ? 'border-accent' : 'border-transparent'}`} style={active ? { boxShadow: 'var(--glow)', background: 'var(--accent-soft)' } : undefined}>
                   {f.vals[sg.id].map((v, i) => (
-                    <motion.div layout key={`${sg.id}-${v}-${i}`} className={`flex-1 h-10 rounded-lg grid place-items-center font-mono text-sm font-bold border ${st === 'sorted' || st === 'merging' ? 'bg-accent text-accent-fg border-accent' : 'bg-elevated border-line'}`}
+                    <motion.div layout key={`${sg.id}-${v}-${i}`} className={`flex-1 h-10 rounded-lg grid place-items-center font-mono text-sm font-semibold border ${st === 'sorted' || st === 'merging' ? 'bg-accent text-accent-fg border-accent' : 'bg-elevated border-line'}`}
                       style={st === 'sorted' && !active ? { opacity: 0.75 } : undefined}>{v}</motion.div>
                   ))}
                 </div>

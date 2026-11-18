@@ -27,11 +27,11 @@ export function TryItProvider({ children }: { children: ReactNode }) {
             <motion.div key="scrim" className="fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setState(null)} />
             <motion.aside key="drawer" role="dialog" aria-label={state.title}
               className="fixed right-0 top-0 bottom-0 z-50 w-full lg:w-[min(1100px,92vw)] bg-bg border-l border-line shadow-2xl flex flex-col"
-              initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 30, stiffness: 280 }}>
+              initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}>
               <div className="flex items-center gap-3 px-5 h-14 border-b border-line shrink-0">
                 <span className="grid place-items-center w-8 h-8 rounded-lg bg-accent-soft text-accent"><Terminal size={16} /></span>
                 <div className="min-w-0">
-                  <div className="font-semibold text-sm truncate">{state.title}</div>
+                  <div className="font-medium text-sm truncate">{state.title}</div>
                   <div className="text-xs text-subtle">Real Python 3 running in your browser · <span className="kbd">Ctrl</span> + <span className="kbd">Enter</span> to run · <span className="kbd">Esc</span> to close</div>
                 </div>
                 <button className="btn btn-ghost btn-icon ml-auto" onClick={() => setState(null)} aria-label="Close"><X size={18} /></button>

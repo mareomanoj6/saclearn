@@ -43,13 +43,13 @@ export function GreedyVis() {
       <div className="flex flex-wrap gap-3 mb-4"><Stat label="total_time" value={f.total} /><Stat label="task_count" value={f.count} tone="good" /><Stat label="available" value={T} tone="warn" /></div>
       <div className="flex flex-wrap gap-2 mb-5 min-h-[56px]">
         {f.order.map(x => (
-          <motion.div layout key={x.id} transition={{ type: 'spring', stiffness: 300, damping: 28 }} className="h-14 rounded-xl grid place-items-center font-mono font-bold border px-3"
+          <motion.div layout key={x.id} transition={{ type: 'spring', stiffness: 300, damping: 28 }} className="h-14 rounded-xl grid place-items-center font-mono font-semibold border px-3"
             style={{ width: 36 + x.t * 14, background: C[f.status[x.id]], color: f.status[x.id] === 'idle' ? 'var(--fg)' : '#fff', borderColor: f.status[x.id] === 'idle' ? 'var(--line)' : 'transparent' }}>{x.t}</motion.div>
         ))}
       </div>
       <div className="label mb-1">Timeline (0 → {T})</div>
       <div className="relative h-10 rounded-xl bg-surface-2 overflow-hidden border border-line">
-        {(() => { let acc = 0; return f.order.filter(x => f.status[x.id] === 'taken').map(x => { const left = (acc / T) * 100; acc += x.t; return <motion.div key={x.id} initial={{ width: 0 }} animate={{ width: `${(x.t / T) * 100}%` }} className="absolute top-0 bottom-0 grid place-items-center text-xs font-bold text-white border-r-2 border-bg" style={{ left: `${left}%`, background: 'var(--good)' }}>{x.t}</motion.div> }) })()}
+        {(() => { let acc = 0; return f.order.filter(x => f.status[x.id] === 'taken').map(x => { const left = (acc / T) * 100; acc += x.t; return <motion.div key={x.id} initial={{ width: 0 }} animate={{ width: `${(x.t / T) * 100}%` }} className="absolute top-0 bottom-0 grid place-items-center text-xs font-semibold text-white border-r-2 border-bg" style={{ left: `${left}%`, background: 'var(--good)' }}>{x.t}</motion.div> }) })()}
       </div>
       <div className="mt-4"><PlayerControls s={s} caption={f.caption} /></div>
     </VisShell>
@@ -85,11 +85,11 @@ export function CoinsVis() {
   return (
     <VisShell title="Greedy coin change" desc="Works perfectly for standard currency — but try the {1, 3, 4} set with amount 6 to see greedy fail.">
       <div className="flex flex-wrap gap-1.5 mb-3">{(Object.keys(SETS) as (keyof typeof SETS)[]).map(k => <button key={k} className={`btn btn-sm ${setName === k ? 'tab-active' : ''}`} onClick={() => { setSetName(k); if (k === 'Tricky {1, 3, 4}') setAmount(6) }}>{k}</button>)}</div>
-      <label className="flex items-center gap-3 text-sm mb-5"><span className="text-subtle">Amount</span><input type="range" min={1} max={99} value={amount} onChange={e => setAmount(Number(e.target.value))} className="flex-1 max-w-sm accent-[var(--accent)]" /><span className="font-mono font-bold text-accent w-10">{amount}</span></label>
+      <label className="flex items-center gap-3 text-sm mb-5"><span className="text-subtle">Amount</span><input type="range" min={1} max={99} value={amount} onChange={e => setAmount(Number(e.target.value))} className="flex-1 max-w-sm accent-[var(--accent)]" /><span className="font-mono font-semibold text-accent w-10">{amount}</span></label>
       <div className="flex flex-wrap gap-3 items-center min-h-[84px] rounded-2xl bg-surface border border-line p-4">
         {f.picked.map((c, i) => (
           <motion.div key={i} initial={{ y: -40, opacity: 0, rotate: -40 }} animate={{ y: 0, opacity: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 260, damping: 18 }}
-            className="rounded-full grid place-items-center font-bold text-white shadow-md" style={{ width: 34 + Math.min(c, 25) * 1.4, height: 34 + Math.min(c, 25) * 1.4, background: `radial-gradient(circle at 30% 30%, #fde68a, #d97706)` }}>{c}</motion.div>
+            className="rounded-full grid place-items-center font-semibold text-white shadow-md" style={{ width: 34 + Math.min(c, 25) * 1.4, height: 34 + Math.min(c, 25) * 1.4, background: `radial-gradient(circle at 30% 30%, #fde68a, #d97706)` }}>{c}</motion.div>
         ))}
         {f.picked.length === 0 && <span className="text-sm text-subtle">No coins yet</span>}
         <span className="ml-auto chip chip-muted">remaining {f.left}</span>

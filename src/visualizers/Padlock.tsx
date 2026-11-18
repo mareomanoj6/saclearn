@@ -44,11 +44,11 @@ export function PadlockVis() {
           <div className="rounded-3xl p-5 flex gap-3 border-2" style={{ background: 'var(--surface-2)', borderColor: open ? 'var(--good)' : 'var(--line)' }}>
             {digits.map((d, i) => (
               <div key={i} className="w-14 h-20 rounded-xl bg-elevated border border-line overflow-hidden relative grid place-items-center">
-                <motion.span key={d + i} initial={{ y: -24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.08 }} className="font-mono text-4xl font-bold" style={{ color: open ? 'var(--good)' : 'var(--fg)' }}>{d}</motion.span>
+                <motion.span key={d + i} initial={{ y: -24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.08 }} className="font-mono text-4xl font-semibold" style={{ color: open ? 'var(--good)' : 'var(--fg)' }}>{d}</motion.span>
               </div>
             ))}
           </div>
-          <div className="mt-3 flex items-center gap-2 font-semibold" style={{ color: open ? 'var(--good)' : 'var(--subtle)' }}>{open ? <LockOpen size={18} /> : <Lock size={18} />}{open ? `Opened with ${String(target).padStart(3, '0')}!` : running ? 'Trying…' : 'Locked'}</div>
+          <div className="mt-3 flex items-center gap-2 font-medium" style={{ color: open ? 'var(--good)' : 'var(--subtle)' }}>{open ? <LockOpen size={18} /> : <Lock size={18} />}{open ? `Opened with ${String(target).padStart(3, '0')}!` : running ? 'Trying…' : 'Locked'}</div>
         </div>
         <div>
           <div className="flex flex-wrap gap-3 mb-4">
@@ -75,7 +75,7 @@ function PasswordCalc() {
   const human = secs < 1 ? `${(secs * 1000).toFixed(2)} ms` : secs < 60 ? `${secs.toFixed(1)} s` : secs < 3600 ? `${(secs / 60).toFixed(1)} min` : secs < 86400 ? `${(secs / 3600).toFixed(1)} hours` : secs < 3.15e7 ? `${(secs / 86400).toFixed(1)} days` : `${(secs / 3.15e7).toExponential(2)} years`
   return (
     <div className="card-soft p-4 mt-5">
-      <div className="font-semibold text-sm mb-2">Password guessing — how big is the search space?</div>
+      <div className="font-medium text-sm mb-2">Password guessing — how big is the search space?</div>
       <div className="flex flex-wrap gap-2 mb-3">
         {(Object.keys(sets) as (keyof typeof sets)[]).map(k => (
           <button key={k} onClick={() => setSets(s => ({ ...s, [k]: !s[k] }))} className={`btn btn-sm ${sets[k] ? 'tab-active' : ''}`}>{k} ({k === 'lower' || k === 'upper' ? 26 : k === 'digits' ? 10 : 33})</button>

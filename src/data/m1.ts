@@ -348,8 +348,8 @@ print("Average of", n, "marks =", round(average, 2))
           { type: 'p', text: 'A **variable** is a name that refers to a memory location. In Python a variable is created the moment you assign to it — no type declaration.' },
           { type: 'code', lang: 'python', runnable: true, code: 'a = 10            # int\nb = "StudyGlance"  # str\nc = 12.5          # float\nx = y = z = 50    # same value to many variables\np, q, r = 5, 10, 15  # multiple assignment\nprint(a, b, c, x, y, z, p, q, r)' },
           { type: 'table', caption: 'Identifier rules', head: ['Identifier', 'Valid?', 'Reason'], rows: [
-            ['totalSales', '✅ Yes', ''], ['total_Sales', '✅ Yes', ''], ['_count', '✅ Yes', 'May start with underscore'],
-            ['4thQtrSales', '❌ No', 'Cannot begin with a digit'], ['totalSale$', '❌ No', 'Cannot contain $'], ['for', '❌ No', 'Keyword'],
+            ['totalSales', 'Yes', ''], ['total_Sales', 'Yes', ''], ['_count', 'Yes', 'May start with underscore'],
+            ['4thQtrSales', 'No', 'Cannot begin with a digit'], ['totalSale$', 'No', 'Cannot contain $'], ['for', 'No', 'Keyword'],
           ] },
           { type: 'list', items: [
             '**Tokens** (smallest units): keywords, identifiers, literals, operators, special symbols.',

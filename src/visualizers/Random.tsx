@@ -39,8 +39,8 @@ export function CouponVis() {
         <div className="rounded-2xl border border-line bg-surface p-4">
           <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
             {counts.map((c, i) => (
-              <motion.div key={i} animate={{ scale: last === i ? [1, 1.25, 1] : 1 }} transition={{ duration: 0.35 }} className={`aspect-square rounded-xl grid place-items-center text-xs font-bold border ${c ? 'bg-accent text-accent-fg border-accent' : 'border-dashed border-line text-subtle'}`}>
-                <div className="text-center leading-tight">#{i + 1}{c > 1 && <div className="text-[10px] opacity-80">×{c}</div>}</div>
+              <motion.div key={i} animate={{ scale: last === i ? [1, 1.25, 1] : 1 }} transition={{ duration: 0.35 }} className={`aspect-square rounded-xl grid place-items-center text-xs font-semibold border ${c ? 'bg-accent text-accent-fg border-accent' : 'border-dashed border-line text-subtle'}`}>
+                <div className="text-center leading-tight">#{i + 1}{c > 1 && <div className="text-xs opacity-80">×{c}</div>}</div>
               </motion.div>
             ))}
           </div>
@@ -49,7 +49,7 @@ export function CouponVis() {
             <Stat label="Unique coupons" value={`${new Set(got).size}/${n}`} tone="warn" />
             <Stat label="Expected n·Hₙ" value={(n * H(n)).toFixed(2)} tone="good" />
           </div>
-          {complete && <div className="mt-3 text-sm font-semibold" style={{ color: 'var(--good)' }}>🎉 All {n} coupons collected after {bought} purchases — next pair is free!</div>}
+          {complete && <div className="mt-3 text-sm font-medium" style={{ color: 'var(--good)' }}>All {n} coupons collected after {bought} purchases, so the next pair is free</div>}
         </div>
         <div className="card-soft p-4">
           <div className="flex justify-between items-baseline"><div className="label">Across {trials.length} customers</div><div className="text-sm">average <b className="font-mono text-accent">{avg ? avg.toFixed(2) : '—'}</b> vs theory <b className="font-mono" style={{ color: 'var(--good)' }}>{(n * H(n)).toFixed(2)}</b></div></div>
@@ -91,9 +91,9 @@ export function HatsVis() {
           return (
             <div key={person} className="flex flex-col items-center w-14">
               <motion.div key={`${round}-${person}`} initial={{ y: -30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: person * 0.05 }}
-                className="w-12 h-7 rounded-t-full grid place-items-center text-[10px] font-bold text-white" style={{ background: `hsl(${hues[hat % 12]} 80% 50%)` }}>{hat + 1}</motion.div>
-              <div className={`w-11 h-11 rounded-full grid place-items-center font-bold text-sm border-2 ${ok ? 'border-good text-good' : 'border-line'}`} style={{ background: ok ? 'var(--good-soft)' : 'var(--elevated)' }}>P{person + 1}</div>
-              {ok && <span className="text-[10px] font-bold mt-0.5" style={{ color: 'var(--good)' }}>match!</span>}
+                className="w-12 h-7 rounded-t-full grid place-items-center text-xs font-semibold text-white" style={{ background: `hsl(${hues[hat % 12]} 80% 50%)` }}>{hat + 1}</motion.div>
+              <div className={`w-11 h-11 rounded-full grid place-items-center font-semibold text-sm border-2 ${ok ? 'border-good text-good' : 'border-line'}`} style={{ background: ok ? 'var(--good-soft)' : 'var(--elevated)' }}>P{person + 1}</div>
+              {ok && <span className="text-xs font-semibold mt-0.5" style={{ color: 'var(--good)' }}>match!</span>}
             </div>
           )
         })}
@@ -105,7 +105,7 @@ export function HatsVis() {
           <div className="flex items-end gap-2 h-32">
             {dist.map((d, k) => (
               <div key={k} className="flex-1 flex flex-col items-center h-full justify-end">
-                <span className="text-[10px] text-subtle font-mono">{history.length ? ((d / history.length) * 100).toFixed(0) + '%' : ''}</span>
+                <span className="text-xs text-subtle font-mono">{history.length ? ((d / history.length) * 100).toFixed(0) + '%' : ''}</span>
                 <motion.div className="w-full rounded-t bg-accent" animate={{ height: `${(d / dmax) * 85}%` }} />
                 <span className="text-xs font-mono mt-1">{k === Math.min(n, 6) ? `${k}+` : k}</span>
               </div>

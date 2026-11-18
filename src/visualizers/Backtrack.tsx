@@ -20,7 +20,7 @@ function build(): Frame[] {
     if (node === 'G') { snap(path, `Reached G — success! Final path ${path.join(' → ')}`, true); return true }
     for (const nx of ADJ[node]) { if (dfs(nx, [...path, nx])) return true }
     dead.add(node)
-    if (path.length > 1) snap(path.slice(0, -1), `${node} is a dead end ✗ — backtrack to ${path[path.length - 2]} and try another option.`)
+    if (path.length > 1) snap(path.slice(0, -1), `${node} is a dead end, so backtrack to ${path[path.length - 2]} and try another option.`)
     return false
   }
   dfs('X', ['X'])

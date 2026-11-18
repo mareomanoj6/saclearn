@@ -87,7 +87,7 @@ export function Compiler({ initialCode, height = '560px', onChange, initialStdin
       {/* ---------------- output ---------------- */}
       <div className="card flex flex-col min-h-[260px] overflow-hidden">
         <div className="flex items-center gap-2 px-3 h-12 border-b border-line shrink-0">
-          <span className="text-sm font-semibold">Output</span>
+          <span className="text-sm font-medium">Output</span>
           <StatusPill status={py.status} />
           {py.ms != null && <span className="text-xs text-subtle">{py.ms < 1000 ? `${py.ms.toFixed(0)} ms` : `${(py.ms / 1000).toFixed(2)} s`}</span>}
           <div className="ml-auto flex gap-1.5">

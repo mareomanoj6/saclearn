@@ -5,9 +5,9 @@ import { LABS } from '../data/labs'
 import { ALL_TOPICS } from '../data/syllabus'
 import { load, save } from '../lib/storage'
 
-const WELCOME = `# Welcome to the SAC LEARN Python Playground 🐍
+const WELCOME = `# SAC LEARN Python Playground
 # Real CPython (via WebAssembly) runs right here in your browser.
-# Press Run ▶ or Ctrl + Enter. Put input() values in the Input box.
+# Press Run or Ctrl + Enter. Put input() values in the Input box.
 
 name = input("What's your name? ")
 print(f"Hello, {name}! Let's think algorithmically.")
@@ -44,7 +44,7 @@ export function Playground() {
       </aside>
       <div className="order-1 xl:order-2 min-w-0">
         <div className="flex flex-wrap items-end gap-3 mb-4">
-          <h1 className="text-2xl font-bold tracking-tight">Python Playground</h1>
+          <h1 className="text-2xl font-medium">Python Playground</h1>
         </div>
         <Compiler key={sel.key} initialCode={sel.code} initialStdin={sel.stdin} height="calc(100vh - 210px)"
           onChange={c => save('atp-playground', { code: c, stdin: '' })} />

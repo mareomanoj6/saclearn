@@ -151,14 +151,14 @@ function render(n: Node, f: Frame): ReactNode {
   if (f.skipped.has(n.id)) return <span className="opacity-35 line-through decoration-1">{plain(n)}</span>
   if (f.reduced.has(n.id) && n.k !== 'lit') {
     const active = f.active === n.id
-    return <motion.span key={`${n.id}-${active}`} initial={active ? { scale: 1.25 } : false} animate={{ scale: 1 }} className={`inline-block px-1.5 rounded-md font-bold ${active ? (f.error ? 'bg-bad text-white' : 'bg-accent text-accent-fg') : 'bg-accent-soft text-accent'}`}>{repr(f.reduced.get(n.id)!)}</motion.span>
+    return <motion.span key={`${n.id}-${active}`} initial={active ? { scale: 1.25 } : false} animate={{ scale: 1 }} className={`inline-block px-1.5 rounded-md font-semibold ${active ? (f.error ? 'bg-bad text-white' : 'bg-accent text-accent-fg') : 'bg-accent-soft text-accent'}`}>{repr(f.reduced.get(n.id)!)}</motion.span>
   }
   switch (n.k) {
     case 'lit': return <span>{n.text}</span>
-    case 'var': return <span className="text-violet font-semibold">{n.name}</span>
+    case 'var': return <span className="text-violet font-medium">{n.name}</span>
     case 'paren': return <span>({render(n.e, f)})</span>
     case 'un': return <span>{n.op === 'not' ? 'not ' : n.op.replace('u', '')}{render(n.e, f)}</span>
-    case 'bin': return <span>{render(n.l, f)} <span className={f.active === n.id ? 'text-accent font-bold' : 'text-subtle'}>{n.op}</span> {render(n.r, f)}</span>
+    case 'bin': return <span>{render(n.l, f)} <span className={f.active === n.id ? 'text-accent font-semibold' : 'text-subtle'}>{n.op}</span> {render(n.r, f)}</span>
   }
 }
 function plain(n: Node): string {
@@ -216,7 +216,7 @@ export function PrecedenceVis() {
           <div className="label mb-2">Precedence ladder</div>
           {LADDER.map(([label, ops], i) => {
             const on = f.op ? ops.includes(f.op) || (f.op === 'u-' && ops.includes('u-')) : false
-            return <div key={label} className={`flex items-center gap-2 text-xs font-mono px-2 py-[3px] rounded-md ${on ? 'bg-accent text-accent-fg font-bold' : 'text-muted'}`}><span className="w-4 text-right opacity-60">{i + 1}</span>{label}</div>
+            return <div key={label} className={`flex items-center gap-2 text-xs font-mono px-2 py-1 rounded-md ${on ? 'bg-accent text-accent-fg font-semibold' : 'text-muted'}`}><span className="w-4 text-right opacity-60">{i + 1}</span>{label}</div>
           })}
         </div>
       </div>
