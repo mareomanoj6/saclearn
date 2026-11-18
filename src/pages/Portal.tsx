@@ -61,16 +61,15 @@ export function Portal() {
             transition={{ duration: 0.35, delay: 0.15 }}
             className="flex flex-wrap items-center gap-3 mt-8"
           >
-            <a href="/courses/dsa/" className="btn btn-primary h-12 px-6 text-[15px] font-medium shadow-sm">
-              Launch Atlas DSA Studio
+            <a href="/courses/atp/" className="btn btn-primary h-12 px-6 text-[15px] font-medium shadow-sm">
+              Launch ATP Studio
               <ArrowRight size={17} />
             </a>
-            <a href="#courses-catalog" className="btn h-12 px-6 text-[15px] font-medium">
-              Browse Course Catalog
+            <a href="/courses/dsa/" className="btn h-12 px-6 text-[15px] font-medium">
+              Launch Atlas DSA Studio
             </a>
-            <a href={href('/about')} className="btn h-12 px-5 text-[15px] font-medium text-muted hover:text-fg">
-              <Info size={16} />
-              About SAC Learn
+            <a href="#courses-catalog" className="btn btn-ghost h-12 px-5 text-[15px] font-medium text-muted hover:text-fg">
+              Browse Catalog
             </a>
           </motion.div>
         </div>

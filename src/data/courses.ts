@@ -20,6 +20,25 @@ export interface CourseItem {
 
 export const COURSES: CourseItem[] = [
   {
+    id: 'atp',
+    code: 'UCEST105',
+    title: 'Algorithmic Thinking with Python',
+    semester: 'S1 / S2',
+    scheme: 'KTU 2024 Scheme',
+    credits: 4,
+    category: 'Computer Science & Engineering',
+    status: 'live',
+    description: 'Comprehensive KTU curriculum coverage with in-browser Python execution, visual recursion traces, flashcards, and exam-mapped previous year solutions.',
+    route: '/courses/atp/',
+    accentColor: '#2563eb',
+    tags: ['Python', 'Algorithms', 'Interactive Visualizers', 'PYQ Analysis'],
+    metrics: {
+      modules: 4,
+      topics: 16,
+      visualizers: 14
+    }
+  },
+  {
     id: 'dsa',
     code: 'CST201',
     title: 'Data Structures & Algorithms (Atlas)',
@@ -37,20 +56,6 @@ export const COURSES: CourseItem[] = [
       topics: 24,
       visualizers: 18
     }
-  },
-  {
-    id: 'atp',
-    code: 'UCEST105',
-    title: 'Algorithmic Thinking with Python',
-    semester: 'S1 / S2',
-    scheme: 'KTU 2024 Scheme',
-    credits: 4,
-    category: 'Computer Science & Engineering',
-    status: 'development',
-    description: 'Comprehensive KTU curriculum coverage with in-browser Python execution, visual recursion traces, flashcards, and exam-mapped previous year solutions.',
-    route: '#',
-    accentColor: '#2563eb',
-    tags: ['Python', 'Algorithms', 'Interactive Visualizers', 'PYQ Analysis']
   },
   {
     id: 'oop',

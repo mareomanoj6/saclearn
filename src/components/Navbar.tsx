@@ -42,8 +42,8 @@ export function Navbar({ section }: { section: string }) {
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
-          <a href="/courses/dsa/" className="btn btn-primary h-9 px-3.5 text-xs font-medium hidden sm:inline-flex">
-            Launch DSA Studio
+          <a href="#courses-catalog" className="btn btn-primary h-9 px-3.5 text-xs font-medium hidden sm:inline-flex">
+            Explore Studios
           </a>
 
           <button onClick={toggle} className="btn btn-icon" aria-label="Toggle light/dark mode" title="Toggle theme">
