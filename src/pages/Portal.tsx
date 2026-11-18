@@ -177,21 +177,15 @@ export function Portal() {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0 lg:min-w-[220px]">
+              <div className="shrink-0">
                 <a
                   href={LINKS.suggestWhatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-primary h-11 px-4 text-xs font-semibold justify-center shadow-sm"
+                  className="btn btn-primary h-11 px-5 text-xs font-semibold justify-center shadow-sm"
                 >
                   <span>Suggest a Course</span>
                   <ArrowRight size={15} />
-                </a>
-                <a
-                  href={`mailto:${LINKS.email}?subject=Course%20Suggestion%20-%20SAC%20Learn`}
-                  className="btn h-11 px-4 text-xs font-medium justify-center"
-                >
-                  <span>Contribute Notes</span>
                 </a>
               </div>
             </div>
