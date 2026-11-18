@@ -40,7 +40,7 @@ export const COURSES: CourseItem[] = [
   },
   {
     id: 'dsa',
-    code: 'CST201',
+    code: 'PCCST303 & PCEOT303',
     title: 'Data Structures & Algorithms (Atlas)',
     semester: 'S3',
     scheme: 'KTU 2024 Scheme',

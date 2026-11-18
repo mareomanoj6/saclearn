@@ -126,7 +126,7 @@ export function Navbar({ section }: { section: string }) {
                           </span>
                         </div>
                         <div className="text-xs text-subtle mt-0.5">
-                          CST201 · S3 · Step-by-step visual simulations & C runner
+                          PCCST303 & PCEOT303 · S3 · Step-by-step visual simulations & C runner
                         </div>
                       </div>
                     </a>

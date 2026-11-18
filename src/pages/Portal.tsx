@@ -9,6 +9,7 @@ import {
   Clock 
 } from 'lucide-react'
 import { COURSES, CourseItem } from '../data/courses'
+import { LINKS } from '../data/links'
 
 export function Portal() {
   const [filter, setFilter] = useState<'all' | 'live' | 'pipeline'>('all')
@@ -152,6 +153,49 @@ export function Portal() {
               </div>
             )
           })}
+
+          {(filter === 'all' || filter === 'pipeline') && (
+            <div className="col-span-1 md:col-span-2 lg:col-span-3 card p-6 sm:p-8 border border-dashed border-accent/40 bg-surface/50 backdrop-blur-sm flex flex-col lg:flex-row lg:items-center justify-between gap-6 transition-all hover:border-accent">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-semibold bg-accent-soft text-accent border border-accent/20 mb-3">
+                  <Sparkles size={13} />
+                  <span>Curriculum Expansion in Progress</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-semibold tracking-tight mb-2">
+                  More Courses Coming Soon
+                </h3>
+                <p className="text-sm text-muted leading-relaxed mb-4">
+                  We are actively digitizing and engineering interactive environments for additional KTU courses across branches. Stepper engines, browser compilers, and syllabus question paper analyses are in development.
+                </p>
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="text-xs text-subtle font-medium mr-1.5">Planned tracks:</span>
+                  {['Database Management Systems', 'Operating Systems', 'Computer Networks', 'Formal Languages & Automata', 'Digital Electronics'].map(track => (
+                    <span key={track} className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-surface text-subtle border border-line">
+                      {track}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0 lg:min-w-[220px]">
+                <a
+                  href={LINKS.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary h-11 px-4 text-xs font-semibold justify-center shadow-sm"
+                >
+                  <span>Suggest a Course</span>
+                  <ArrowRight size={15} />
+                </a>
+                <a
+                  href={`mailto:${LINKS.email}?subject=Course%20Suggestion%20-%20SAC%20Learn`}
+                  className="btn h-11 px-4 text-xs font-medium justify-center"
+                >
+                  <span>Contribute Notes</span>
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

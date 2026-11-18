@@ -27,25 +27,25 @@ export function Footer() {
 
   return (
     <footer className="border-t border-line bg-surface/30 backdrop-blur-md">
-      <div className="mx-auto max-w-[1780px] px-4 sm:px-6 lg:px-10 py-7 sm:py-9 flex flex-col md:flex-row items-center justify-between gap-5 text-sm">
-        <div className="text-center md:text-left text-muted">
+      <div className="mx-auto max-w-[1780px] px-4 sm:px-6 lg:px-10 py-3 sm:py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm">
+        <div className="text-center sm:text-left text-muted">
           <span className="text-accent font-semibold mr-1">©</span>
           <span className="text-fg font-medium">2026 SAC LEARN</span>
           <span className="mx-2 text-line" aria-hidden>·</span>
           <span>KSU CET Student Assist Cell</span>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <div className="relative" ref={popupRef}>
             <button
               onClick={() => setIgOpen(o => !o)}
               aria-label="Instagram accounts"
               title="Instagram"
-              className={`text-accent hover:text-accent-strong p-2 rounded-lg transition-all ${
+              className={`text-accent hover:text-accent-strong p-1.5 rounded-lg transition-all ${
                 igOpen ? 'bg-accent-soft text-accent-strong' : 'hover:bg-accent-soft'
               }`}
             >
-              <InstagramIcon width={19} height={19} />
+              <InstagramIcon width={17} height={17} />
             </button>
 
             <AnimatePresence>
@@ -118,18 +118,18 @@ export function Footer() {
             rel="noopener noreferrer"
             aria-label="YouTube"
             title="YouTube"
-            className="text-accent hover:text-accent-strong p-2 rounded-lg hover:bg-accent-soft transition-all"
+            className="text-accent hover:text-accent-strong p-1.5 rounded-lg hover:bg-accent-soft transition-all"
           >
-            <YoutubeIcon width={19} height={19} />
+            <YoutubeIcon width={17} height={17} />
           </a>
 
           <a
             href={'mailto:' + LINKS.email}
             aria-label="Email"
             title={LINKS.email}
-            className="text-accent hover:text-accent-strong p-2 rounded-lg hover:bg-accent-soft transition-all"
+            className="text-accent hover:text-accent-strong p-1.5 rounded-lg hover:bg-accent-soft transition-all"
           >
-            <Mail size={19} strokeWidth={1.8} />
+            <Mail size={17} strokeWidth={1.8} />
           </a>
 
           <a
@@ -138,13 +138,13 @@ export function Footer() {
             rel="noopener noreferrer"
             aria-label="WhatsApp"
             title="WhatsApp"
-            className="text-accent hover:text-accent-strong p-2 rounded-lg hover:bg-accent-soft transition-all"
+            className="text-accent hover:text-accent-strong p-1.5 rounded-lg hover:bg-accent-soft transition-all"
           >
-            <WhatsappIcon width={19} height={19} />
+            <WhatsappIcon width={17} height={17} />
           </a>
         </div>
 
-        <div className="text-center md:text-right text-muted">
+        <div className="text-center sm:text-right text-muted text-xs">
           Developed by <span className="font-semibold text-accent">KSU SAC</span>
         </div>
       </div>
