@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import { useRoute } from './lib/router'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
@@ -21,10 +22,13 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-[100dvh] flex flex-col">
-      <Navbar section={section} />
-      <main className="flex-1">{page}</main>
-      <Footer />
-    </div>
+    <>
+      <div className="min-h-[100dvh] flex flex-col">
+        <Navbar section={section} />
+        <main className="flex-1">{page}</main>
+        <Footer />
+      </div>
+      <Analytics />
+    </>
   )
 }
