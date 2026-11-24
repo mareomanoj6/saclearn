@@ -37,7 +37,43 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/courses/daa",
+      "destination": "/courses/daa/",
+      "permanent": false
+    },
+    {
+      "source": "/courses/atp",
+      "destination": "/courses/atp/",
+      "permanent": false
+    },
+    {
+      "source": "/courses/dsa",
+      "destination": "/courses/dsa/",
+      "permanent": false
+    },
+    {
+      "source": "/course/daa",
+      "destination": "/courses/daa/",
+      "permanent": false
+    },
+    {
+      "source": "/course/atp",
+      "destination": "/courses/atp/",
+      "permanent": false
+    },
+    {
+      "source": "/course/dsa",
+      "destination": "/courses/dsa/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/courses/assets/:path*",
+      "destination": "https://saclearn-daa.vercel.app/assets/:path*"
+    },
     {
       "source": "/courses/atp/assets/:path*",
       "destination": "https://sac-learn-atp.vercel.app/assets/:path*"

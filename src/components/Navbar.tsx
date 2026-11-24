@@ -44,11 +44,11 @@ export function Navbar({ section }: { section: string }) {
     <header className="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur-xl safe-top safe-x">
       <div className="mx-auto max-w-[1780px] flex items-center gap-2 h-16 px-4 sm:px-6 lg:px-10">
         <a href={href('/')} className="flex items-center gap-2 sm:gap-3 mr-1 sm:mr-3 min-w-0">
-          <img src="./ksucet-light.png" alt="KSU CET" className="h-8 sm:h-9 w-auto dark:hidden" />
-          <img src="./ksucet-dark.png" alt="KSU CET" className="h-8 sm:h-9 w-auto hidden dark:block" />
+          <img src="/ksucet-light.png" alt="KSU CET" className="h-8 sm:h-9 w-auto dark:hidden" />
+          <img src="/ksucet-dark.png" alt="KSU CET" className="h-8 sm:h-9 w-auto hidden dark:block" />
           <span className="w-px h-7 bg-line mx-0 sm:mx-1" aria-hidden />
-          <img src="./logo-light.png" alt="SAC LEARN logo" className="h-8 sm:h-9 w-auto dark:hidden" />
-          <img src="./logo.png" alt="SAC LEARN logo" className="h-8 sm:h-9 w-auto hidden dark:block" />
+          <img src="/logo-light.png" alt="SAC LEARN logo" className="h-8 sm:h-9 w-auto dark:hidden" />
+          <img src="/logo.png" alt="SAC LEARN logo" className="h-8 sm:h-9 w-auto hidden dark:block" />
           <span className="leading-tight min-w-0">
             <span className="block font-semibold text-sm sm:text-[15px] whitespace-nowrap">SAC LEARN</span>
             <span className="hidden sm:block text-[11px] text-subtle font-medium">Student Assist Cell · CET</span>
