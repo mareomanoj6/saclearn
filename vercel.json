@@ -119,6 +119,46 @@
       "destination": "https://atlas-sac.vercel.app/$1"
     },
     {
+      "source": "/courses/daa/assets/:path*",
+      "destination": "https://saclearn-daa.vercel.app/assets/:path*"
+    },
+    {
+      "source": "/courses/daa/:file(.*\\.(?:png|svg|ico|jpg|jpeg|webp|json|wasm))",
+      "destination": "https://saclearn-daa.vercel.app/:file"
+    },
+    {
+      "source": "/courses/daa/",
+      "destination": "https://saclearn-daa.vercel.app/"
+    },
+    {
+      "source": "/courses/daa",
+      "destination": "https://saclearn-daa.vercel.app/"
+    },
+    {
+      "source": "/courses/daa/(.*)",
+      "destination": "https://saclearn-daa.vercel.app/$1"
+    },
+    {
+      "source": "/course/daa/assets/:path*",
+      "destination": "https://saclearn-daa.vercel.app/assets/:path*"
+    },
+    {
+      "source": "/course/daa/:file(.*\\.(?:png|svg|ico|jpg|jpeg|webp|json|wasm))",
+      "destination": "https://saclearn-daa.vercel.app/:file"
+    },
+    {
+      "source": "/course/daa/",
+      "destination": "https://saclearn-daa.vercel.app/"
+    },
+    {
+      "source": "/course/daa",
+      "destination": "https://saclearn-daa.vercel.app/"
+    },
+    {
+      "source": "/course/daa/(.*)",
+      "destination": "https://saclearn-daa.vercel.app/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

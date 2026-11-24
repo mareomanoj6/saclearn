@@ -58,6 +58,25 @@ export const COURSES: CourseItem[] = [
     }
   },
   {
+    id: 'daa',
+    code: 'PCCST502',
+    title: 'Design and Analysis of Algorithms',
+    semester: 'S5',
+    scheme: 'KTU 2024 Scheme',
+    credits: 4,
+    category: 'Computer Science & Engineering',
+    status: 'live',
+    description: 'Interactive algorithm benches, asymptotic growth comparisons, loop step calculators, and syllabus-synchronized mock examinations. Master dynamic programming, greedy paradigms, and complexity bounds by watching algorithms execute step by step.',
+    route: '/courses/daa/',
+    accentColor: '#7c3aed',
+    tags: ['Algorithm Benches', 'Asymptotic Proofs', 'Dynamic Programming', 'Loop Analysis', 'Mock Exams'],
+    metrics: {
+      modules: 5,
+      topics: 28,
+      visualizers: 20
+    }
+  },
+  {
     id: 'oop',
     code: 'PBCST304 & PBEOT404',
     title: 'Object-Oriented Programming (Java)',

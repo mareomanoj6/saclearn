@@ -10,6 +10,7 @@ import {
   ChevronDown,
   Terminal,
   Cpu,
+  Workflow,
   Clock,
   Code2
 } from 'lucide-react'
@@ -130,6 +131,30 @@ export function Navbar({ section }: { section: string }) {
                         </div>
                       </div>
                     </a>
+
+                    <a
+                      href="/courses/daa/"
+                      onClick={() => setCoursesOpen(false)}
+                      className="group flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-line hover:bg-elevated transition-all"
+                    >
+                      <div className="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-500 grid place-items-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform">
+                        <Workflow size={18} />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-semibold text-sm text-fg group-hover:text-indigo-500 transition-colors">
+                            Design and Analysis of Algorithms
+                          </span>
+                          <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-good-soft text-good">
+                            <span className="w-1.5 h-1.5 rounded-full bg-good animate-pulse" />
+                            Live
+                          </span>
+                        </div>
+                        <div className="text-xs text-subtle mt-0.5">
+                          PCCST502 · S5 · Interactive algorithm benches, asymptotic growth & proofs
+                        </div>
+                      </div>
+                    </a>
                   </div>
 
                   <div className="pt-2 mt-2 border-t border-line/70">
@@ -162,12 +187,15 @@ export function Navbar({ section }: { section: string }) {
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
-          <div className="hidden sm:flex items-center gap-2">
-            <a href="/courses/atp/" className="btn btn-primary h-9 px-3.5 text-xs font-medium">
+          <div className="hidden md:flex items-center gap-2">
+            <a href="/courses/atp/" className="btn btn-primary h-9 px-3 text-xs font-medium">
               Launch ATP
             </a>
-            <a href="/courses/dsa/" className="btn h-9 px-3.5 text-xs font-medium">
+            <a href="/courses/dsa/" className="btn h-9 px-3 text-xs font-medium">
               Launch DSA
+            </a>
+            <a href="/courses/daa/" className="btn h-9 px-3 text-xs font-medium">
+              Launch DAA
             </a>
           </div>
 
@@ -221,6 +249,18 @@ export function Navbar({ section }: { section: string }) {
                 <div className="flex items-center gap-2.5">
                   <Cpu size={17} className="text-good" />
                   <span>Data Structures (Atlas)</span>
+                </div>
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-good-soft text-good">Live</span>
+              </a>
+
+              <a
+                href="/courses/daa/"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between p-3 rounded-xl border border-line bg-elevated text-sm font-medium"
+              >
+                <div className="flex items-center gap-2.5">
+                  <Workflow size={17} className="text-indigo-500" />
+                  <span>Design & Analysis of Algorithms</span>
                 </div>
                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-good-soft text-good">Live</span>
               </a>
